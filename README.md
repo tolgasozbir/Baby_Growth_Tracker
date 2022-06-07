@@ -1,10 +1,9 @@
 # Baby Growth Tracker
 
-this first my Flutter project.
+<p align="center" width="100%">
+    <img src="https://github.com/tolgasozbir/Baby_Growth_Tracker/blob/main/images/splashIcon.png" height="480"/>
+</p>
 
-A graduation project
+<img src="https://github.com/tolgasozbir/Baby_Growth_Tracker/blob/main/babyGrowthTracker.gif" height="640"/> 
 
 
-![banner](https://github.com/tolgasozbir/Baby_Growth_Tracker/blob/main/images/splashIcon.png)
-
-<img src="https://github.com/tolgasozbir/Baby_Growth_Tracker/blob/main/babyGrowthTracker.gif" width="324" height="720"/>
