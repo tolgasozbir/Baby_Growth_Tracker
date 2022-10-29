@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:particles_flutter/particles_flutter.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-import 'package:where_is_my_potty_mom/models/babyDAL.dart';
-import 'package:where_is_my_potty_mom/models/diary.dart';
+import 'package:baby_growth_tracker/models/babyDAL.dart';
+import 'package:baby_growth_tracker/models/diary.dart';
 import 'dart:math' as math;
 import 'package:sizer/sizer.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -401,8 +401,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                           btnOkText: "Sil",
                           //borderSide: BorderSide(color: Colors.purple.shade900, width: 3),
                           context: context,
-                          dialogType: DialogType.QUESTION,
-                          animType: AnimType.SCALE,
+                          dialogType: DialogType.question,
+                          animType: AnimType.scale,
                           headerAnimationLoop: false,
                           title: 'Bir Günlük Silmek Üzeresin!',
                           desc: 'Bu Günlüğü Silmek İstediğinize Emin Misin?',

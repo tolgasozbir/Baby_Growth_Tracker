@@ -1,4 +1,4 @@
-package com.example.where_is_my_potty_mom
+package com.babyGrowthTracker
 
 import io.flutter.embedding.android.FlutterActivity
 

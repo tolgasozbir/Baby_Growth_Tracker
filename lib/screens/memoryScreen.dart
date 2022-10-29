@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
-import 'package:where_is_my_potty_mom/models/babyDAL.dart';
-import 'package:where_is_my_potty_mom/models/memory.dart';
+import 'package:baby_growth_tracker/models/babyDAL.dart';
+import 'package:baby_growth_tracker/models/memory.dart';
 
 class MemoryScreen extends StatefulWidget {
   const MemoryScreen({ Key? key }) : super(key: key);
@@ -155,13 +155,15 @@ class _MemoryScreenState extends State<MemoryScreen> {
   Padding buildBody() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: StaggeredGridView.countBuilder(
-        itemCount: isLoading ? 12 : memoryList.length,
-        staggeredTileBuilder: (index) =>index % 2 == 0 ? StaggeredTile.count(2, 2) : StaggeredTile.count(2, 1),
+      child: StaggeredGrid.count(
+        //TODO:
+        //itemCount: isLoading ? 12 : memoryList.length,
+        //staggeredTileBuilder: (index) =>index % 2 == 0 ? StaggeredTile.count(2, 2) : StaggeredTile.count(2, 1),
         crossAxisCount: 4, 
-        itemBuilder: (context,index)=> isLoading 
-        ? shimmerEffect() 
-        : content(index),
+        // itemBuilder: (context,index)=> isLoading 
+        // ? shimmerEffect() 
+        // : content(index),
+        children: [],
       ),
     );
   }
@@ -238,8 +240,8 @@ class _MemoryScreenState extends State<MemoryScreen> {
                         btnCancelText: "İptal",
                         btnOkText: "Sil",
                         context: context,
-                        dialogType: DialogType.QUESTION,
-                        animType: AnimType.SCALE,
+                        dialogType: DialogType.question,
+                        animType: AnimType.scale,
                         headerAnimationLoop: false,
                         title: 'Bir Notu Silmek Üzeresin!',
                         desc: 'Bu Notu Silmek İstediğinize Emin Misin?',

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'dart:math' as math;
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:where_is_my_potty_mom/models/baby.dart';
-import 'package:where_is_my_potty_mom/models/babyDAL.dart';
-import 'package:where_is_my_potty_mom/models/memory.dart';
-import 'package:where_is_my_potty_mom/models/myIcons.dart';
-import 'package:where_is_my_potty_mom/screens/BMIScreen.dart';
-import 'package:where_is_my_potty_mom/screens/babySizeScreen.dart';
-import 'package:where_is_my_potty_mom/screens/diaryScreen.dart';
-import 'package:where_is_my_potty_mom/screens/memoryScreen.dart';
+import 'package:baby_growth_tracker/models/baby.dart';
+import 'package:baby_growth_tracker/models/babyDAL.dart';
+import 'package:baby_growth_tracker/models/memory.dart';
+import 'package:baby_growth_tracker/models/myIcons.dart';
+import 'package:baby_growth_tracker/screens/BMIScreen.dart';
+import 'package:baby_growth_tracker/screens/babySizeScreen.dart';
+import 'package:baby_growth_tracker/screens/diaryScreen.dart';
+import 'package:baby_growth_tracker/screens/memoryScreen.dart';
 
 class MemoriesScreen extends StatefulWidget {
 

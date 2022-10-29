@@ -205,7 +205,7 @@ class _BMIScreenState extends State<BMIScreen> {
         width: 94.w,
         height: 6.h,
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.purple.shade900),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.purple.shade900),
           child: Text("Hesapla",style: TextStyle(color: Colors.white, fontSize: 14.sp,fontWeight: FontWeight.w600)),
           onPressed: (){
             scroll.animateTo(scroll.position.maxScrollExtent, duration: Duration(milliseconds: 1000), curve: Curves.ease);

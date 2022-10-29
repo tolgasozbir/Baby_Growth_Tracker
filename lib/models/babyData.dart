@@ -1,4 +1,4 @@
-import 'package:where_is_my_potty_mom/models/baby.dart';
+import 'package:baby_growth_tracker/models/baby.dart';
 
 class BabySize {
   late int id;

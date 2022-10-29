@@ -1,12 +1,11 @@
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:where_is_my_potty_mom/screens/beginningScreen.dart';
-import 'package:where_is_my_potty_mom/screens/blogScreen.dart';
-import 'package:where_is_my_potty_mom/models/navbar_key.dart';
-import 'package:where_is_my_potty_mom/screens/memoriesScreen.dart';
-import 'package:where_is_my_potty_mom/screens/reminderScreen.dart';
-import 'package:where_is_my_potty_mom/screens/splashScreen.dart';
+import 'package:baby_growth_tracker/screens/beginningScreen.dart';
+import 'package:baby_growth_tracker/screens/blogScreen.dart';
+import 'package:baby_growth_tracker/models/navbar_key.dart';
+import 'package:baby_growth_tracker/screens/memoriesScreen.dart';
+import 'package:baby_growth_tracker/screens/reminderScreen.dart';
+import 'package:baby_growth_tracker/screens/splashScreen.dart';
 
 void main() {
   runApp(MyApp());

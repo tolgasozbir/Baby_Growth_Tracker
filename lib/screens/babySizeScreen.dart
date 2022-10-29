@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:where_is_my_potty_mom/models/baby.dart';
-import 'package:where_is_my_potty_mom/models/babyDAL.dart';
-import 'package:where_is_my_potty_mom/models/babyData.dart';
-import 'package:where_is_my_potty_mom/providerModels/babySizeModel.dart';
+import 'package:baby_growth_tracker/models/baby.dart';
+import 'package:baby_growth_tracker/models/babyDAL.dart';
+import 'package:baby_growth_tracker/models/babyData.dart';
+import 'package:baby_growth_tracker/providerModels/babySizeModel.dart';
 
 class BabySizeScreen extends StatefulWidget {
   final List<Baby> babyList;  //or List<Baby> babyList=[];
@@ -368,7 +368,7 @@ class _BabySizeScreenState extends State<BabySizeScreen> {
               LinearShapePointer(
                   value: obj.pointerValue,
                   enableAnimation: false,
-                  onValueChanged: (dynamic value) {
+                  onChanged: (dynamic value) {
                     obj.updatePointer(value);
                   },
                   position: LinearElementPosition.outside,
@@ -380,7 +380,7 @@ class _BabySizeScreenState extends State<BabySizeScreen> {
                 value: obj.pointerValue,
                 enableAnimation: false,
                 position: LinearElementPosition.cross,
-                  onValueChanged: (dynamic value) {
+                  onChanged: (dynamic value) {
                     obj.updatePointer(value);
                     _pointerValue=obj.pointerValue;         //ana değişken
                   },
@@ -396,7 +396,7 @@ class _BabySizeScreenState extends State<BabySizeScreen> {
                 value: obj.pointerValue,
                 markerAlignment: LinearMarkerAlignment.center,
                 enableAnimation: false,
-                  onValueChanged: (dynamic value) {
+                  onChanged: (dynamic value) {
                     obj.updatePointer(value);
                   },
                 offset: 56.w,
@@ -461,7 +461,7 @@ class _BabySizeScreenState extends State<BabySizeScreen> {
           markerPointers: <LinearMarkerPointer>[
             LinearWidgetPointer(
               value: obj.textWidgetPointerValue,
-              onValueChanged: (dynamic value) {
+              onChanged: (dynamic value) {
                 obj.updateTextWidgetPointerValue(value);
                 _textWidgetPointerValue=value;            //here
               },

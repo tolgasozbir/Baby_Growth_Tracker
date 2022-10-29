@@ -1,6 +1,6 @@
 {
-    "name": "where_is_my_potty_mom",
-    "short_name": "where_is_my_potty_mom",
+    "name": "baby_growth_tracker",
+    "short_name": "baby_growth_tracker",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
