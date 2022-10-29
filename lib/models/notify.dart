@@ -43,7 +43,7 @@ class LocalNotifyManager {
   initializePlatform(){
     _configureLocalTimeZone();
     var initSettingAndroid=AndroidInitializationSettings("@mipmap/ic_launcher");
-    var initSettingIOS=IOSInitializationSettings(
+    var initSettingIOS= DarwinInitializationSettings (
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
@@ -64,10 +64,7 @@ class LocalNotifyManager {
 
   
   setOnNotificationClick(Function onNotificationClick) async{
-    await flutterLocalNotificationsPlugin.initialize(initSetting,
-    onSelectNotification: (String? payload) async{
-      onNotificationClick(payload);
-    } );
+    await flutterLocalNotificationsPlugin.initialize(initSetting);
   }
 
   ///////////////////////////////       Notifications       /////////////////////////////////////////////
@@ -76,12 +73,11 @@ class LocalNotifyManager {
     var androidChannel=AndroidNotificationDetails(
       'CHANNEL_ID',
       'CHANNEL_NAME',
-      'CHANNEL_DESC',
       color: Colors.amber,
       importance: Importance.max,
       priority: Priority.high,
     );
-    var iosChannel=IOSNotificationDetails();
+    var iosChannel=DarwinNotificationDetails();
     var platformChannel=NotificationDetails(android: androidChannel,iOS: iosChannel);
     return platformChannel;
   }
@@ -101,6 +97,20 @@ class LocalNotifyManager {
       101, 
       "Bez Değiştirmeyi Unutma!",   //heyy bezimi değiştirmeyi unuttun : title --- gel buraya ve bezimi kontrol et ıslanmışsa değiştir -- sanki bebeğin ağzından gibi
       "Bebeğiniz altını ıslatmış olabilir. Kontrol etmeyi unutmayın!", // random mesajlardan çeksin 3 5 farklı mesaj olsun 
+      time,
+      platformChannel,
+      uiLocalNotificationDateInterpretation:UILocalNotificationDateInterpretation.absoluteTime,
+      androidAllowWhileIdle: true,
+    );
+  }  
+  
+  Future<void> testNotify() async{
+    var time=tz.TZDateTime.now(tz.local).add(Duration(seconds: 10));
+    NotificationDetails platformChannel = platformDetail();
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      101, 
+      "title",
+      "body",
       time,
       platformChannel,
       uiLocalNotificationDateInterpretation:UILocalNotificationDateInterpretation.absoluteTime,
@@ -239,7 +249,7 @@ class LocalNotifyManager {
     sp.setInt("medicineH", h);
     sp.setInt("medicineM", m);
     sp.setInt("medicineS", s);
-    print("$year:$month:$day - $h:$m:$s Sleep süre kayit edildi");
+    print("$year:$month:$day - $h:$m:$s Medicine süre kayit edildi");
   }
 
   void veriKayitSize(int year,int month, int day ,int h,int m, int s) async{
@@ -250,7 +260,7 @@ class LocalNotifyManager {
     sp.setInt("sizeH", h);
     sp.setInt("sizeM", m);
     sp.setInt("sizeS", s);
-    print("$year:$month:$day - $h:$m:$s Sleep süre kayit edildi");
+    print("$year:$month:$day - $h:$m:$s Size süre kayit edildi");
   }
 
   void veriKayitCustom(int year,int month, int day ,int h,int m, int s,String message) async{
@@ -262,7 +272,7 @@ class LocalNotifyManager {
     sp.setInt("customM", m);
     sp.setInt("customS", s);
     sp.setString("customMessage", message);
-    print("$year:$month:$day - $h:$m:$s Sleep süre kayit edildi");
+    print("$year:$month:$day - $h:$m:$s Custom süre kayit edildi");
   }
   
 }

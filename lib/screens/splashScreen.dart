@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:where_is_my_potty_mom/main.dart';
+import 'package:baby_growth_tracker/main.dart';
 
 class SplashScreen extends StatefulWidget {
 

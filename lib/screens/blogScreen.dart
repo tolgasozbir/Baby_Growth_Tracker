@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:where_is_my_potty_mom/screens/blogDetailScreen.dart';
-import 'package:where_is_my_potty_mom/models/blogPageStrings.dart';
+import 'package:baby_growth_tracker/screens/blogDetailScreen.dart';
+import 'package:baby_growth_tracker/models/blogPageStrings.dart';
 
 class BlogScreen extends StatefulWidget {
 

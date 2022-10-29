@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:where_is_my_potty_mom/screens/blog/blogPage1.dart';
-import 'package:where_is_my_potty_mom/screens/blog/blogPage2.dart';
+import 'package:baby_growth_tracker/screens/blog/blogPage1.dart';
+import 'package:baby_growth_tracker/screens/blog/blogPage2.dart';
 
 // ignore: must_be_immutable
 class BlogDetailScreen extends StatelessWidget {

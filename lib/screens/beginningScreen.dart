@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:where_is_my_potty_mom/models/baby.dart';
-import 'package:where_is_my_potty_mom/models/babyDAL.dart';
-import 'package:where_is_my_potty_mom/screens/addBabyScreen.dart';
-import 'package:where_is_my_potty_mom/screens/photoAlbumScreen.dart';
+import 'package:baby_growth_tracker/models/baby.dart';
+import 'package:baby_growth_tracker/models/babyDAL.dart';
+import 'package:baby_growth_tracker/screens/addBabyScreen.dart';
+import 'package:baby_growth_tracker/screens/photoAlbumScreen.dart';
 
 class BeginningScreen extends StatefulWidget {
 
@@ -69,18 +69,19 @@ class _BeginningScreenState extends State<BeginningScreen> {
               var baby=babyList[index];
               return GestureDetector(
                 child: Slidable(
-                  actionPane: SlidableBehindActionPane(),
-                  actionExtentRatio: 0.25,
-                  secondaryActions: [
-                    slideLeftActDelete(baby.id),
-                    //slideLeftActUpdate(),       //Düzenleme eklencek
-                    slideForwardArrowIcon(),
-                  ],
-                  actions: [
-                    slideBackArrowIcon(),
-                    //slideRightActUpdate(),
-                    slideRightActDelete(baby.id),
-                  ],
+                  //TODO
+                  startActionPane: pane(),
+                  // actionExtentRatio: 0.25,
+                  // secondaryActions: [
+                  //   slideLeftActDelete(baby.id),
+                  //   //slideLeftActUpdate(),       //Düzenleme eklencek
+                  //   slideForwardArrowIcon(),
+                  // ],
+                  // actions: [
+                  //   slideBackArrowIcon(),
+                  //   //slideRightActUpdate(),
+                  //   slideRightActDelete(baby.id),
+                  // ],
                   child: SizedBox(
                     height: 160,
                     child: Padding(
@@ -115,73 +116,73 @@ class _BeginningScreenState extends State<BeginningScreen> {
     );
   }
 
-  IconSlideAction slideBackArrowIcon() {
-    return IconSlideAction(
-      caption: "İptal",
-      icon: Icons.arrow_back,
-      color: Colors.grey,
-      foregroundColor: Colors.black,
+  ActionPane pane() {
+    return ActionPane(
+      motion: SizedBox(),
+      children: [
+
+      ],
     );
   }
 
-  IconSlideAction slideForwardArrowIcon() {
-    return IconSlideAction(
-      caption: "İptal",
-      icon: Icons.arrow_forward,
-      color: Colors.grey,
-      foregroundColor: Colors.black,
-    );
-  }
+  // ActionPane slideForwardArrowIcon() {
+  //   return IconSlideAction(
+  //     caption: "İptal",
+  //     icon: Icons.arrow_forward,
+  //     color: Colors.grey,
+  //     foregroundColor: Colors.black,
+  //   );
+  // }
 
-  IconSlideAction slideLeftActUpdate() {
-    return IconSlideAction(
-      caption: "Güncelle",
-      icon: Icons.update,
-      color: Colors.amber,
-      foregroundColor: Colors.white,
-      onTap: (){
-        print("güncel tıklandı");
-      },
-    );
-  }
+  // IconSlideAction slideLeftActUpdate() {
+  //   return IconSlideAction(
+  //     caption: "Güncelle",
+  //     icon: Icons.update,
+  //     color: Colors.amber,
+  //     foregroundColor: Colors.white,
+  //     onTap: (){
+  //       print("güncel tıklandı");
+  //     },
+  //   );
+  // }
 
-  IconSlideAction slideRightActUpdate() {
-    return IconSlideAction(
-      caption: "Güncelle",
-      icon: Icons.update,
-      color: Colors.amber,
-      foregroundColor: Colors.white,
-      onTap: (){
-        print("güncel tıklandı");
-      },
-    );
-  }
+  // IconSlideAction slideRightActUpdate() {
+  //   return IconSlideAction(
+  //     caption: "Güncelle",
+  //     icon: Icons.update,
+  //     color: Colors.amber,
+  //     foregroundColor: Colors.white,
+  //     onTap: (){
+  //       print("güncel tıklandı");
+  //     },
+  //   );
+  // }
 
-  IconSlideAction slideLeftActDelete(int id) {
-    return IconSlideAction(
-      caption: "Sil",
-      icon: Icons.delete,
-      color: Colors.red,
-      foregroundColor: Colors.white,
-      onTap: (){
-        BabyDal().deleteBaby(id);
-        setState(() {  });
-      },
-    );
-  }
+  // IconSlideAction slideLeftActDelete(int id) {
+  //   return IconSlideAction(
+  //     caption: "Sil",
+  //     icon: Icons.delete,
+  //     color: Colors.red,
+  //     foregroundColor: Colors.white,
+  //     onTap: (){
+  //       BabyDal().deleteBaby(id);
+  //       setState(() {  });
+  //     },
+  //   );
+  // }
 
-  IconSlideAction slideRightActDelete(int id) {
-    return IconSlideAction(
-      caption: "Sil",
-      icon: Icons.delete,
-      color: Colors.red,
-      foregroundColor: Colors.white,
-      onTap: (){
-        BabyDal().deleteBaby(id);
-        setState(() {   });
-      },
-    );
-  }
+  // IconSlideAction slideRightActDelete(int id) {
+  //   return IconSlideAction(
+  //     caption: "Sil",
+  //     icon: Icons.delete,
+  //     color: Colors.red,
+  //     foregroundColor: Colors.white,
+  //     onTap: (){
+  //       BabyDal().deleteBaby(id);
+  //       setState(() {   });
+  //     },
+  //   );
+  // }
 
   Expanded rightIcon() {
     return Expanded(

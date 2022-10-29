@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.where_is_my_potty_mom">
+    package="com.babyGrowthTracker">
      <uses-permission	android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
      <uses-permission android:name="android.permission.VIBRATE"/>
    <application

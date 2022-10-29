@@ -1,8 +1,8 @@
-import 'package:where_is_my_potty_mom/models/babyData.dart';
-import 'package:where_is_my_potty_mom/models/dbInstaller.dart';
-import 'package:where_is_my_potty_mom/models/baby.dart';
-import 'package:where_is_my_potty_mom/models/diary.dart';
-import 'package:where_is_my_potty_mom/models/memory.dart';
+import 'package:baby_growth_tracker/models/babyData.dart';
+import 'package:baby_growth_tracker/models/dbInstaller.dart';
+import 'package:baby_growth_tracker/models/baby.dart';
+import 'package:baby_growth_tracker/models/diary.dart';
+import 'package:baby_growth_tracker/models/memory.dart';
 
 class BabyDal {
 

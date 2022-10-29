@@ -1,4 +1,6 @@
 
+          //// HATA VAR AKTİF GÖRÜNMÜYORLARR ///
+
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +8,8 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:where_is_my_potty_mom/models/notify.dart';
-import 'package:where_is_my_potty_mom/models/myIcons.dart';
+import 'package:baby_growth_tracker/models/notify.dart';
+import 'package:baby_growth_tracker/models/myIcons.dart';
 
 class ReminderScreen extends StatefulWidget {
 
@@ -69,7 +71,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
     checkReminders(103, switchSleep, timeSleep, "sleepYear", "sleepMonth", "sleepDay", "sleepH", "sleepM", "sleepS");
     checkReminders(104, switchMedicine, timeMedicine, "medicineYear", "medicineMonth", "medicineDay", "medicineH", "medicineM", "medicineS");
     checkReminders(105, switchSize, timeSize, "sizeYear", "sizeMonth", "sizeDay", "sizeH", "sizeM", "sizeS");
-    checkReminders(106, switchCustom, timeCustom, "customYear", "customMonth", "customDay", "customH", "customM", "custom S");
+    checkReminders(106, switchCustom, timeCustom, "customYear", "customMonth", "customDay", "customH", "customM", "customS");
     loadData();
   }
 
@@ -110,6 +112,9 @@ class _ReminderScreenState extends State<ReminderScreen> {
               childAspectRatio: 3.6.h/1.h,
               physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               children: [
+                ElevatedButton(onPressed: (){
+                  noti.testNotify();
+                }, child: Text("test")),
                 babyNappy(context,1),
                 babyFeed(context,2),
                 babySleep(context,3),
@@ -544,12 +549,15 @@ class _ReminderScreenState extends State<ReminderScreen> {
     var scheduleTime=tz.TZDateTime(tz.local, year, month, day, H, M, S);
     var left=tz.TZDateTime(tz.local, year-now.year, month-now.month, day-now.day, H-now.hour,M-now.minute,S-now.second);
     if (now.isBefore(scheduleTime)) {
-      switchName=true;
+      
+      setState(() {
+        switchName=true;
+      });
       timeDurationName=Duration(hours: left.hour, minutes: left.minute);
       setState(() {});
     }
     else{
-      switchName=false;
+      switchName=true;
       noti.notifyCancel(notifyCancelId);
     }
   }

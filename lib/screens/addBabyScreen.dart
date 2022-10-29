@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:where_is_my_potty_mom/main.dart';
-import 'package:where_is_my_potty_mom/models/babyDAL.dart';
+import 'package:baby_growth_tracker/main.dart';
+import 'package:baby_growth_tracker/models/babyDAL.dart';
 
 class AddBabyScreen extends StatefulWidget {
 
@@ -220,7 +220,7 @@ class _AddBabyScreenState extends State<AddBabyScreen> {
       padding: const EdgeInsets.all(18.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 80, 0, 140),
+          backgroundColor: Color.fromARGB(255, 80, 0, 140),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(100)),
             side: BorderSide(color: Colors.amber,width: 1),
