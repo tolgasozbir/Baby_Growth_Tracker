@@ -456,8 +456,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
                         btnOkText: "Düzenle",
                         //borderSide: BorderSide(color: Colors.purple.shade900, width: 3),
                         context: context,
-                        dialogType: DialogType.WARNING,
-                        animType: AnimType.SCALE,
+                        dialogType: DialogType.warning,
+                        animType: AnimType.scale,
                         headerAnimationLoop: false,
                         title: 'Bir Günlük Sayfasını Düzenliyorsun!',
                         body: Padding(padding: const EdgeInsets.all(8),
@@ -515,8 +515,8 @@ class _DiaryScreenState extends State<DiaryScreen> {
   AwesomeDialog addNewDiary(BuildContext context){
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.INFO_REVERSED,
+      animType: AnimType.scale,
+      dialogType: DialogType.infoReverse,
       headerAnimationLoop: false,
       body: Padding(padding: const EdgeInsets.all(8),
         child: Form(

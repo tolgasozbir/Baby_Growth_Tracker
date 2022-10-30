@@ -275,8 +275,8 @@ class _MemoryScreenState extends State<MemoryScreen> {
   AwesomeDialog updateDialog(BuildContext context,int id){
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.INFO_REVERSED,
+      animType: AnimType.scale,
+      dialogType: DialogType.infoReverse,
       headerAnimationLoop: false,
       body: Padding(padding: const EdgeInsets.all(8),
         child: Form(
@@ -324,8 +324,8 @@ class _MemoryScreenState extends State<MemoryScreen> {
   AwesomeDialog addMemory(BuildContext context){
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.INFO_REVERSED,
+      animType: AnimType.scale,
+      dialogType: DialogType.infoReverse,
       headerAnimationLoop: false,
       body: Padding(padding: const EdgeInsets.all(8),
         child: Form(
