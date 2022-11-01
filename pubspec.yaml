@@ -1,64 +1,36 @@
 name: baby_growth_tracker
 description: Baby Growth Tracker App.
 
-publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=2.18.2 <3.0.0'
+
 
 dependencies:
   flutter:
     sdk: flutter
-  curved_navigation_bar: ^1.0.3
-  path: ^1.8.2
-  sqflite: ^2.2.0+2
-  flutter_slidable: ^2.0.0
-  flutter_native_timezone: ^2.0.0
-  shared_preferences: ^2.0.15
-  timeline_tile: ^2.0.0
-  animated_text_kit: ^4.2.2
-  google_fonts: ^3.0.1
-  awesome_dialog: ^3.0.2
-  wave: ^0.2.2
-  floating_dots: ^0.2.4
-  particles_flutter: ^0.1.4
-  flutter_staggered_grid_view: ^0.6.2
-  shimmer: ^2.0.0
-  path_provider: ^2.0.11
-  syncfusion_flutter_charts: ^20.3.52
-  syncfusion_flutter_gauges: ^20.3.52
-  provider: ^6.0.4
+
+  cupertino_icons: ^1.0.2
   flutter_spinkit: ^5.1.0
-  flutter_html: ^2.1.1
-  image_picker: ^0.8.6
-  flutter_local_notifications: ^12.0.3
-  rxdart: ^0.27.5
-  timezone: ^0.9.0
-  sizer: ^2.0.13
+  provider: ^6.0.4
+  auto_route: ^5.0.2
+  google_nav_bar: ^5.0.6
+  flutter_snake_navigationbar: ^0.6.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.2
+  auto_route_generator: ^5.0.3
+
+
 flutter:
   uses-material-design: true
 
   assets:
-    - images/
-    - database/babyTrackDb.sqlite
-
-  fonts:
-    - family: moon
-      fonts: 
-      - asset: images/myIcons/moon.ttf
-    - family: diaper
-      fonts: 
-      - asset: images/myIcons/diaper.ttf
-    - family: icons
-      fonts: 
-      - asset: images/myIcons/icons.ttf
-    - family: swipe
-      fonts:
-      - asset: images/myIcons/swipeUpDown.ttf
+    - assets/icons/
+    - assets/images/
