@@ -5,7 +5,7 @@ class Baby {
   final String name;
   final int age;
   final String gender;
-  final String? image;
+  final String? profileImage;
   final List<String>? photoAlbum;
 
   Baby({
@@ -13,7 +13,7 @@ class Baby {
     required this.name,
     required this.age,
     required this.gender,
-    this.image,
+    this.profileImage,
     this.photoAlbum,
   });
 
@@ -23,7 +23,7 @@ class Baby {
       'name': name,
       'age': age,
       'gender': gender,
-      'img': image,
+      'profileImage': profileImage,
       'photoAlbum': photoAlbum,
     };
   }
@@ -34,7 +34,7 @@ class Baby {
       name: map['name'] as String,
       age: map['age'] as int,
       gender: map['gender'] as String,
-      image: map['img'] != null ? map['img'] as String : null,
+      profileImage: map['profileImage'] != null ? map['profileImage'] as String : null,
       photoAlbum: map['photoAlbum'] != null ? List<String>.from((map['photoAlbum'] as List<String>)) : null,
     );
   }
