@@ -16,9 +16,7 @@ class _BabiesViewState extends State<BabiesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          context.router.push(AddBabyRoute());
-        },
+        onPressed: ()=> context.router.push(AddBabyRoute()),
         child: Icon(Icons.add,),
       ),
       body: _bodyView(),

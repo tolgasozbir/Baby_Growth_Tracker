@@ -35,6 +35,24 @@ class _$AppRouter extends RootStackRouter {
         child: const EmptyRouterPage(),
       );
     },
+    Memories.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const MemoriesView(),
+      );
+    },
+    Reminders.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ReminderView(),
+      );
+    },
+    Blog.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const BlogView(),
+      );
+    },
     BabiesRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -88,7 +106,22 @@ class _$AppRouter extends RootStackRouter {
                   parent: BabiesViewFullRoute.name,
                 ),
               ],
-            )
+            ),
+            RouteConfig(
+              Memories.name,
+              path: '',
+              parent: DashboardRoute.name,
+            ),
+            RouteConfig(
+              Reminders.name,
+              path: '',
+              parent: DashboardRoute.name,
+            ),
+            RouteConfig(
+              Blog.name,
+              path: '',
+              parent: DashboardRoute.name,
+            ),
           ],
         ),
       ];
@@ -130,6 +163,42 @@ class BabiesViewFullRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BabiesViewFullRoute';
+}
+
+/// generated route for
+/// [MemoriesView]
+class Memories extends PageRouteInfo<void> {
+  const Memories()
+      : super(
+          Memories.name,
+          path: '',
+        );
+
+  static const String name = 'Memories';
+}
+
+/// generated route for
+/// [ReminderView]
+class Reminders extends PageRouteInfo<void> {
+  const Reminders()
+      : super(
+          Reminders.name,
+          path: '',
+        );
+
+  static const String name = 'Reminders';
+}
+
+/// generated route for
+/// [BlogView]
+class Blog extends PageRouteInfo<void> {
+  const Blog()
+      : super(
+          Blog.name,
+          path: '',
+        );
+
+  static const String name = 'Blog';
 }
 
 /// generated route for

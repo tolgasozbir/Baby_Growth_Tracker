@@ -14,6 +14,7 @@ class AppTheme {
         onPrimary: Colors.amber,
         secondary: Color(0xFF3D3082),
         onSecondary: Colors.white,
+        background: Color(0xFFE6E6E6),
       ),
       iconTheme: IconThemeData(color: Colors.white),
       appBarTheme: AppBarTheme(
