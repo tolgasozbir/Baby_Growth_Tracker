@@ -56,12 +56,12 @@ class BabyCard extends StatelessWidget {
         children: [
           Text(
             baby.name, 
-            style: AppStyles.h3Bold.copyWith(color: ui.Color(0xFF3D3082)),
+            style: AppTextStyle.h3Bold.copyWith(color: ui.Color(0xFF3D3082)),
             overflow: TextOverflow.ellipsis,
           ),
           Text(
             "${baby.age} Yaşında", 
-            style: AppStyles.h4Regular.copyWith(color: Colors.black45),
+            style: AppTextStyle.h4Regular.copyWith(color: Colors.black45),
           ), 
         ],
       ),

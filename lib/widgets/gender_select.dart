@@ -9,16 +9,16 @@ extension GenderExtension on Gender{
   } 
 }
 
-class GenderRadioIcons extends StatefulWidget {
-  const GenderRadioIcons({super.key, required this.onChanged});
+class GenderSelect extends StatefulWidget {
+  const GenderSelect({super.key, required this.onChanged});
 
   final ValueChanged<Gender> onChanged;
 
   @override
-  State<GenderRadioIcons> createState() => _GenderRadioIconsState();
+  State<GenderSelect> createState() => _GenderSelectState();
 }
 
-class _GenderRadioIconsState extends State<GenderRadioIcons> {
+class _GenderSelectState extends State<GenderSelect> {
   Gender _genderValue = Gender.female;
   double _iconSize = 80;
 
@@ -52,7 +52,7 @@ class _GenderRadioIconsState extends State<GenderRadioIcons> {
                     ? Colors.blueAccent
                     : Colors.black45
                 ),
-            Text(gender.getName, style: AppStyles.h5Bold.copyWith(color: Colors.black54),)
+            Text(gender.getName, style: AppTextStyle.h5Bold.copyWith(color: Colors.black54),)
           ],
         ),
       )).toList(),

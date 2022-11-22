@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
-   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
   
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
