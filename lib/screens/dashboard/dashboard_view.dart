@@ -16,9 +16,9 @@ class _DashboardViewState extends State<DashboardView> {
 
   List<PageRouteInfo<dynamic>> _routes = [
     BabiesViewFullRoute(),
-    BabiesViewFullRoute(),
-    BabiesViewFullRoute(),
-    BabiesViewFullRoute(),
+    Memories(),
+    Reminders(),
+    Blog(),
   ];
 
   @override
@@ -28,10 +28,12 @@ class _DashboardViewState extends State<DashboardView> {
       routes: _routes,
       builder: (context, child, pageController) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return Scaffold(
-          appBar: _appBar(context),
-          body: SafeArea(child: child),
-          bottomNavigationBar: _navBar(tabsRouter, pageController),
+        return SafeArea(
+          child: Scaffold(
+            appBar: _appBar(context),
+            body: child,
+            bottomNavigationBar: _navBar(tabsRouter, pageController),
+          ),
         );
       },
     );

@@ -53,7 +53,6 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
         _currentIndex = index;
         widget.onTap?.call(index);
         context.router.popTop();
-        setState(() {});
       },
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppStyles {
+  AppStyles._();
+
   static const TextStyle h1 =         TextStyle(fontSize: 34, fontWeight: FontWeight.bold, height: 1.5);
   static const TextStyle h2 =         TextStyle(fontSize: 28, fontWeight: FontWeight.w400, height: 1.5);
   static const TextStyle h3Regular =  TextStyle(fontSize: 24, fontWeight: FontWeight.w400, height: 1.5);
@@ -13,4 +15,10 @@ class AppStyles {
   static const TextStyle h6Bold =     TextStyle(fontSize: 14, fontWeight: FontWeight.bold, height: 1.5);
   static const TextStyle h7Regular =  TextStyle(fontSize: 12, fontWeight: FontWeight.w400, height: 1.5);
   static const TextStyle h7Bold =     TextStyle(fontSize: 12, fontWeight: FontWeight.bold, height: 1.5);
+}
+
+class AppPaddings {
+  AppPaddings._();
+
+  static const EdgeInsets padding8 = EdgeInsets.all(8.0);
 }
