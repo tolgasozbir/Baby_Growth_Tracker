@@ -25,7 +25,7 @@ class _HorizontalListWheelState extends State<AgeHorizontalListWheel> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Text("Select Age", style: AppStyles.h4Regular,),
+        Text("Select Age", style: AppTextStyle.h4Regular,),
         SizedBox(
           height: _height,
           child: RotatedBox(
@@ -53,7 +53,7 @@ class _HorizontalListWheelState extends State<AgeHorizontalListWheel> {
                     ),
                     child: Text(
                       '$index', 
-                      style: AppStyles.h4Bold.copyWith(
+                      style: AppTextStyle.h4Bold.copyWith(
                         color: index == _selectedItem 
                           ? context.colorScheme.primary 
                           : context.colorScheme.onPrimary,

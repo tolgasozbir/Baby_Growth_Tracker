@@ -47,5 +47,14 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- image picker -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to uplaod image</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to uplaod image</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need to uplaod image</string>
+
 </dict>
 </plist>
