@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../constants/locale_keys.g.dart';
+import '../widgets/locale_text.dart';
+
 class ImagePickService {
   ImagePickService._();
   static ImagePickService? _instance;
@@ -34,11 +37,11 @@ class ImagePickService {
         actions: [
           CupertinoActionSheetAction(
             onPressed: () => Navigator.of(context).pop(ImageSource.camera), 
-            child: Text("kamera")
+            child: LocaleText(text: LocaleKeys.camera),
           ),          
           CupertinoActionSheetAction(
             onPressed: () => Navigator.of(context).pop(ImageSource.gallery), 
-            child: Text("galeri")
+            child: LocaleText(text: LocaleKeys.gallery),
           ),
         ],
       )
@@ -53,12 +56,12 @@ class ImagePickService {
         children: [
           ListTile(
             leading: Icon(Icons.camera_alt),
-            title: Text("kamera"),
+            title: LocaleText(text: LocaleKeys.camera),
             onTap: () => Navigator.of(context).pop(ImageSource.camera),
           ),      
           ListTile(
             leading: Icon(Icons.image),
-            title: Text("galeri"),
+            title: LocaleText(text: LocaleKeys.gallery),
             onTap: () => Navigator.of(context).pop(ImageSource.gallery),
           )
         ],

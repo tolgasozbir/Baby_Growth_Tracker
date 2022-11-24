@@ -1,0 +1,16 @@
+{
+    "babies" : "Babies",
+    "memories" : "Memories",
+    "reminders" : "Reminders",
+    "blog" : "Blog",
+
+    "addBaby": "Add Baby",
+
+    "addPhoto" : "Add Photo",
+    "add" : "Add",
+    "camera" : "Camera",
+    "gallery" : "Gallery",
+    "gfemale" : "Female",
+    "gmale" : "Male",
+    "yearsOld" : "{} Years old"
+}

@@ -1,0 +1,16 @@
+{
+    "babies" : "Bebekler",
+    "memories" : "Anılar",
+    "reminders" : "Hatırlatmalar",
+    "blog" : "blog",
+    
+    "addBaby": "Bebek Ekle",
+
+    "addPhoto" : "Fotoğraf Ekle",
+    "add" : "Ekle",
+    "camera" : "Kamera",
+    "gallery" : "Galeri",
+    "gfemale" : "Kız",
+    "gmale" : "Erkek",
+    "yearsOld" : "{} Yaşında"
+}

@@ -1,8 +1,10 @@
 import 'dart:ui' as ui;
+import 'package:baby_growth_tracker/constants/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
 
 import '../constants/app_styles.dart';
+import 'locale_text.dart';
 
 class BabyCard extends StatelessWidget {
   const BabyCard({super.key, required this.baby});
@@ -54,14 +56,16 @@ class BabyCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            baby.name, 
-            style: AppTextStyle.h3Bold.copyWith(color: ui.Color(0xFF3D3082)),
+          LocaleText(
+            withOutLocale: true,
+            text: baby.name, 
+            style: AppTextStyles.h3Bold.copyWith(color: ui.Color(0xFF3D3082)),
             overflow: TextOverflow.ellipsis,
           ),
-          Text(
-            "${baby.age} Yaşında", 
-            style: AppTextStyle.h4Regular.copyWith(color: Colors.black45),
+          LocaleText(
+            pluralValue: baby.age,
+            text: LocaleKeys.yearsOld,
+            style: AppTextStyles.h4Regular.copyWith(color: Colors.black45),
           ), 
         ],
       ),
@@ -108,102 +112,3 @@ class WavePainter extends CustomPainter{
   }
 
 }
-
-// import 'dart:convert';
-// import 'package:baby_growth_tracker/constants/app_styles.dart';
-// import 'package:baby_growth_tracker/models/baby.dart';
-// import 'package:flutter/material.dart';
-
-// class BabyCard extends StatelessWidget {
-//   const BabyCard({super.key, required this.baby, this.height = 160, this.padding, this.margin, this.color, this.borderRadius, this.imageBorder})
-//   : assert(height >= 160);
-
-//   final Baby baby;
-//   ///Must be at least 160 height. Default value : 160
-//   final double height;
-//   ///Default value : EdgeInsets.all(8.0)
-//   final EdgeInsets? padding;
-//   ///Default value : EdgeInsets.only(bottom: 8.0),
-//   final EdgeInsetsGeometry? margin;
-//   ///Card background color.
-//   final Color? color;
-//   ///Default value : BorderRadius.circular(12)
-//   final BorderRadiusGeometry? borderRadius;
-//   ///Default value : Border.all(color: Colors.yellow, width: 3.0, style: BorderStyle.solid),
-//   final BoxBorder? imageBorder;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: height,
-//       padding: padding ?? const EdgeInsets.all(8.0),
-//       margin: margin ?? const EdgeInsets.only(bottom: 8.0),
-//       decoration: BoxDecoration(
-//         color: color ?? Color(0xFF50008C),
-//         borderRadius: borderRadius ?? BorderRadius.circular(12)
-//       ),
-//       child: Row(
-//         children: [
-//           circleImage(),
-//           babyInfo(),
-//           rightIcon(),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Expanded circleImage(){
-//     return Expanded(
-//       flex: 2,
-//       child: Container(
-//         decoration: BoxDecoration(
-//           shape: BoxShape.circle,
-//           border: imageBorder ?? Border.all(color: Colors.yellow, width: 3.0, style: BorderStyle.solid),
-//           image: DecorationImage(
-//             fit: BoxFit.cover,
-//             image: baby.image == null 
-//               ? AssetImage("assets/images/img_default_baby.jpg")
-//               : MemoryImage(base64Decode(baby.image!)) as ImageProvider,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//     Expanded babyInfo() {
-//     return Expanded(
-//       flex: 3,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Text(
-//             baby.name, 
-//             style: AppStyles.h3Bold.copyWith(color: Colors.white),
-//             overflow: TextOverflow.ellipsis,
-//           ),
-//           Text(
-//             "${baby.age} Yaşında", 
-//             style: AppStyles.h4Regular.copyWith(color: Colors.white60),
-//           ),
-//           Icon(
-//             baby.gender == "Erkek" 
-//               ? Icons.male 
-//               : Icons.female, 
-//             color: Colors.white38,
-//             size: 64,
-//           ) 
-//         ],
-//       ),
-//     );
-//   }
-
-//   Expanded rightIcon() {
-//     return Expanded(
-//       child: Icon(
-//         Icons.chevron_right,
-//         color: Colors.white70,
-//         size: 72,
-//       ),
-//     );
-//   }
-// }
