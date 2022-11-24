@@ -1,11 +1,18 @@
 import 'package:baby_growth_tracker/constants/app_styles.dart';
+import 'package:baby_growth_tracker/constants/locale_keys.g.dart';
+import 'package:baby_growth_tracker/widgets/locale_text.dart';
 import 'package:flutter/material.dart';
 
 enum Gender { female, male }
 
 extension GenderExtension on Gender{
-  String get getName {
-    return this.name;
+  String get getLocaleName {
+    switch (this) {
+      case Gender.female:
+        return LocaleKeys.gfemale;
+      case Gender.male:
+        return LocaleKeys.gmale;
+    }
   } 
 }
 
@@ -52,7 +59,10 @@ class _GenderSelectState extends State<GenderSelect> {
                     ? Colors.blueAccent
                     : Colors.black45
                 ),
-            Text(gender.getName, style: AppTextStyle.h5Bold.copyWith(color: Colors.black54),)
+            LocaleText(
+              text: gender.getLocaleName, 
+              style: AppTextStyles.h5Bold.copyWith(color: Colors.black54)
+            ),
           ],
         ),
       )).toList(),

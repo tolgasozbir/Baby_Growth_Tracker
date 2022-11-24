@@ -40,6 +40,8 @@ class _DashboardViewState extends State<DashboardView> {
   }
 
   AppBar _appBar(BuildContext context) {
+    // String currentPath = context.router.urlState.flatten.path;
+    // print(currentPath);
     return AppBar(
       title: Text("Holaaa"),
       leading: context.watchRouter.canPop() ? const AutoLeadingButton() : null,

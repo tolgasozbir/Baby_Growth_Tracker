@@ -12,6 +12,9 @@ import 'package:baby_growth_tracker/widgets/gender_select.dart';
 import 'package:baby_growth_tracker/widgets/space_box.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constants/locale_keys.g.dart';
+import '../../../widgets/locale_text.dart';
+
 class AddBabyView extends StatefulWidget {
   const AddBabyView({super.key});
 
@@ -26,6 +29,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
   final TextEditingController _ageController = TextEditingController();
   Gender _gender = Gender.female;
   String? _pickedImageBase64;
+  final key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -79,13 +83,16 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
           )
         ),
       ),
-    ).wrapPadding(AppPadding.padding12);
+    ).wrapPadding(AppPaddings.padding12);
   }
 
   BorderedButton addPhotoButton() {
     return BorderedButton(
       padding: EdgeInsets.zero,
-      child: Text("Fotoğraf Ekle", style: AppTextStyle.h6Regular.copyWith(color: context.colorScheme.primary)), 
+      child: LocaleText(
+        text: LocaleKeys.addPhoto, 
+        style: AppTextStyles.h6Regular.copyWith(color: context.colorScheme.primary)
+      ),
       onPressed: () async {
         final picker = ImagePickService.instance;
         final pickSource = await picker.showImageSource(context);
@@ -123,9 +130,9 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
             SpaceBox.h16(),
             saveButton(),
           ],
-        ).wrapPadding(AppPadding.padding8),
+        ).wrapPadding(AppPaddings.padding8),
       ),
-    ).wrapPadding(AppPadding.padding8);
+    ).wrapPadding(AppPaddings.padding8);
   }
 
   BorderedButton saveButton() {
@@ -136,7 +143,10 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
       splashColor: context.colorScheme.onPrimary,
       padding: EdgeInsets.zero,
       borderWidth: 2,
-      child: Text("Ekle", style: AppTextStyle.h4Regular.copyWith(color: context.colorScheme.onSecondary)), 
+      child: LocaleText(
+        text: LocaleKeys.add, 
+        style: AppTextStyles.h4Regular.copyWith(color: context.colorScheme.onSecondary)
+      ), 
       onPressed: () {
         final isValid = _formKey.currentState?.validate();
         if (isValid == null || !isValid) return;
