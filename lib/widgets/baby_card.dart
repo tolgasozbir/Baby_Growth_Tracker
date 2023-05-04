@@ -1,4 +1,6 @@
-import 'dart:ui' as ui;
+import 'dart:convert';
+
+import 'package:baby_growth_tracker/constants/app_strings.dart';
 import 'package:baby_growth_tracker/constants/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
@@ -18,7 +20,7 @@ class BabyCard extends StatelessWidget {
       child: SizedBox(
         height: 140,
         child: Card(
-          color: ui.Color(0xFFF4F4F7),
+          color: const Color(0xFFF4F4F7),
           elevation: 4,
           child: CustomPaint(
             painter: WavePainter(),
@@ -40,10 +42,12 @@ class BabyCard extends StatelessWidget {
       flex: 1,
       child: CircleAvatar(
         radius: 42,
-        backgroundColor: ui.Color(0xFF3D3082),
+        backgroundColor: const Color(0xFF3D3082),
         child: CircleAvatar(
           radius: 40,
-          backgroundImage: AssetImage("assets/images/img_default_baby.jpg"),
+          backgroundImage: baby.profileImage == null 
+            ? const AssetImage(AppStrings.defaultBabyImage)
+            : MemoryImage(base64Decode(baby.profileImage!)) as ImageProvider
         ),
       ),
     );
@@ -59,13 +63,13 @@ class BabyCard extends StatelessWidget {
           LocaleText(
             withOutLocale: true,
             text: baby.name, 
-            style: AppTextStyles.h3Bold.copyWith(color: ui.Color(0xFF3D3082)),
+            style: AppTextStyles.h3.copyWith(color: const Color(0xFF3D3082), fontWeight: FontWeight.bold),
             overflow: TextOverflow.ellipsis,
           ),
           LocaleText(
-            pluralValue: baby.age,
-            text: LocaleKeys.yearsOld,
-            style: AppTextStyles.h4Regular.copyWith(color: Colors.black45),
+            args: ["${baby.age}"],
+            text: LocaleKeys.child_yearsOld,
+            style: AppTextStyles.h4.copyWith(color: Colors.black45),
           ), 
         ],
       ),
@@ -75,7 +79,7 @@ class BabyCard extends StatelessWidget {
   Column genderAndArrowIcon(String gender) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
+      children: const [
         Icon(Icons.male, color: Color(0xffAAAAAA), size: 56,),
         Icon(Icons.chevron_right, color: Color(0xFF3D3082), size: 56,),
       ],
@@ -85,14 +89,13 @@ class BabyCard extends StatelessWidget {
 }
 
 class WavePainter extends CustomPainter{
-
   @override
   void paint(Canvas canvas, Size size) {
     final width = size.width;
     final height = size.height;
 
     Paint paint = Paint()
-      ..color = ui.Color(0xFFE7E7E7)
+      ..color = const Color(0xFFE7E7E7)
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
 
@@ -110,5 +113,4 @@ class WavePainter extends CustomPainter{
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
   }
-
 }

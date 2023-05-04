@@ -37,14 +37,14 @@ class BorderedButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           foregroundColor: splashColor,
           backgroundColor: backgroundColor,
-          shape: StadiumBorder(),
+          shape: const StadiumBorder(),
           side: BorderSide(
             color: borderColor ?? context.colorScheme.primary,
             width: borderWidth ?? 1.6,
           ),
         ),
-        child: child.wrapPadding(margin ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 48)),
         onPressed: onPressed,
+        child: child.wrapPadding(margin ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 48)),
       ),
     ).wrapPadding(padding ?? const EdgeInsets.all(8.0));
   }

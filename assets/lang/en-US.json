@@ -1,16 +1,24 @@
 {
-    "babies" : "Babies",
-    "memories" : "Memories",
-    "reminders" : "Reminders",
-    "blog" : "Blog",
+    "tabs" : {
+        "babies" : "Babies",
+            "addBaby": "Add Baby",
+        "memories" : "Memories",
+        "reminders" : "Reminders",
+        "blog" : "Blog"
+    },
 
-    "addBaby": "Add Baby",
+    "child" : {
+        "gfemale" : "Female",
+        "gmale" : "Male",
+        "name" : "Name",
+        "age" : "Age",
+        "yearsOld" : "{} Years old"
+    },
 
-    "addPhoto" : "Add Photo",
-    "add" : "Add",
-    "camera" : "Camera",
-    "gallery" : "Gallery",
-    "gfemale" : "Female",
-    "gmale" : "Male",
-    "yearsOld" : "{} Years old"
+    "common" : {
+        "addPhoto" : "Add Photo",
+        "add" : "Add",
+        "camera" : "Camera",
+        "gallery" : "Gallery"
+    }
 }

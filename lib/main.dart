@@ -1,21 +1,39 @@
 import 'package:baby_growth_tracker/constants/app_strings.dart';
+import 'package:baby_growth_tracker/providers/babies_provider.dart';
+import 'package:baby_growth_tracker/services/app_services.dart';
 import 'package:baby_growth_tracker/theme/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AppServices.instance.initServices();
   await EasyLocalization.ensureInitialized();
-  runApp(EasyLocalization(
-    child: MyApp(), 
-    supportedLocales: AppStrings.supportedLocales,
-    path: AppStrings.lang_path,
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: ((context) => BabiesProvider())),
+      ],
+      child: EasyLocalization(
+        supportedLocales: AppStrings.supportedLocales,
+        path: AppStrings.lang_path,
+        child: MyApp(),
+      ),
+    ),
+  );
+  
+  //Portrait mode only
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
   final _appRouter = AppRouter();
 

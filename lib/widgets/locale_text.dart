@@ -1,5 +1,5 @@
+
 import 'package:baby_growth_tracker/extensions/string_extension.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -11,7 +11,7 @@ class LocaleText extends StatelessWidget {
   final int? maxLines;
   final bool? softWrap;
   final bool withOutLocale;
-  final num? pluralValue;
+  final List<String>? args;
 
   const LocaleText({
     Key? key, 
@@ -22,8 +22,7 @@ class LocaleText extends StatelessWidget {
     this.maxLines, 
     this.softWrap,
     this.withOutLocale = false,
-    this.pluralValue = null,
-
+    this.args,
   }) : super(key: key);
   
   @override
@@ -31,7 +30,9 @@ class LocaleText extends StatelessWidget {
     return Text(
       withOutLocale 
         ? text 
-        : pluralValue == null ? text.locale : text.plural(5),
+        : args == null 
+          ? text.locale
+          : text.localeWithArgs(args: args),
       style: style,
       textScaleFactor: _ScaleSize.textScaleFactor(context),
       textAlign: textAlign,

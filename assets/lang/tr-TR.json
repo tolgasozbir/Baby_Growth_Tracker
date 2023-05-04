@@ -1,16 +1,24 @@
 {
-    "babies" : "Bebekler",
-    "memories" : "Anılar",
-    "reminders" : "Hatırlatmalar",
-    "blog" : "blog",
-    
-    "addBaby": "Bebek Ekle",
+    "tabs" : {
+        "babies" : "Bebekler",
+            "addBaby": "Bebek Ekle",
+        "memories" : "Anılar",
+        "reminders" : "Hatırlatmalar",
+        "blog" : "Blog"
+    },
 
-    "addPhoto" : "Fotoğraf Ekle",
-    "add" : "Ekle",
-    "camera" : "Kamera",
-    "gallery" : "Galeri",
-    "gfemale" : "Kız",
-    "gmale" : "Erkek",
-    "yearsOld" : "{} Yaşında"
+    "child" : {
+        "gfemale" : "Kız",
+        "gmale" : "Erkek",
+        "name" : "İsmi",
+        "age" : "Yaşı",
+        "yearsOld" : "{} Yaşında"
+    },
+
+    "common" : {
+        "addPhoto" : "Fotoğraf Ekle",
+        "add" : "Ekle",
+        "camera" : "Kamera",
+        "gallery" : "Galeri"
+    }
 }

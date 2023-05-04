@@ -13,7 +13,7 @@ class ImagePickService {
   static ImagePickService? _instance;
   static ImagePickService get instance => _instance ??= ImagePickService._();
 
-  ImagePicker _imagePicker = ImagePicker();
+  final ImagePicker _imagePicker = ImagePicker();
 
   Future<String?> pick(ImageSource source) async {
     try {
@@ -27,41 +27,41 @@ class ImagePickService {
   }
 
   Future<ImageSource?> showImageSource(BuildContext context) async {
-    return Platform.isIOS ? _IosView(context) : _androidView(context);
+    return Platform.isIOS ? iosView(context) : androidView(context);
   }
 
-  Future<ImageSource?> _IosView(BuildContext context) {
+  Future<ImageSource?> iosView(BuildContext context) {
     return showCupertinoModalPopup<ImageSource>(
       context: context, 
       builder: (context) => CupertinoActionSheet(
         actions: [
           CupertinoActionSheetAction(
             onPressed: () => Navigator.of(context).pop(ImageSource.camera), 
-            child: LocaleText(text: LocaleKeys.camera),
-          ),          
+            child: const LocaleText(text: LocaleKeys.common_camera),
+          ),
           CupertinoActionSheetAction(
             onPressed: () => Navigator.of(context).pop(ImageSource.gallery), 
-            child: LocaleText(text: LocaleKeys.gallery),
+            child: const LocaleText(text: LocaleKeys.common_gallery),
           ),
         ],
       )
     );
   }
 
-  Future<ImageSource?> _androidView(BuildContext context) {
+  Future<ImageSource?> androidView(BuildContext context) {
     return showModalBottomSheet<ImageSource>(
       context: context, 
       builder: (context)=> Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: Icon(Icons.camera_alt),
-            title: LocaleText(text: LocaleKeys.camera),
+            leading: const Icon(Icons.camera_alt),
+            title: const LocaleText(text: LocaleKeys.common_camera),
             onTap: () => Navigator.of(context).pop(ImageSource.camera),
-          ),      
+          ),
           ListTile(
-            leading: Icon(Icons.image),
-            title: LocaleText(text: LocaleKeys.gallery),
+            leading: const Icon(Icons.image),
+            title: const LocaleText(text: LocaleKeys.common_gallery),
             onTap: () => Navigator.of(context).pop(ImageSource.gallery),
           )
         ],

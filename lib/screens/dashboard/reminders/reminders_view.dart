@@ -12,7 +12,7 @@ class ReminderView extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: Colors.green,
-      child: LocaleText(text: LocaleKeys.reminders),
+      child: const LocaleText(text: LocaleKeys.tabs_reminders),
     );
   }
 }

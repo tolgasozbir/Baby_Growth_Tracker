@@ -1,17 +1,22 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 abstract class  LocaleKeys {
-  static const babies = 'babies';
-  static const memories = 'memories';
-  static const reminders = 'reminders';
-  static const blog = 'blog';
-  static const addPhoto = 'addPhoto';
-  static const add = 'add';
-  static const addBaby = 'addBaby';
-  static const camera = 'camera';
-  static const gallery = 'gallery';
-  static const gfemale = 'gfemale';
-  static const gmale = 'gmale';
-  static const yearsOld = 'yearsOld';
+  static const tabs_babies = 'tabs.babies';
+  static const tabs_addBaby = 'tabs.addBaby';
+  static const tabs_memories = 'tabs.memories';
+  static const tabs_reminders = 'tabs.reminders';
+  static const tabs_blog = 'tabs.blog';
+  static const tabs = 'tabs';
+  static const child_gfemale = 'child.gfemale';
+  static const child_gmale = 'child.gmale';
+  static const child_name = 'child.name';
+  static const child_age = 'child.age';
+  static const child_yearsOld = 'child.yearsOld';
+  static const child = 'child';
+  static const common_addPhoto = 'common.addPhoto';
+  static const common_add = 'common.add';
+  static const common_camera = 'common.camera';
+  static const common_gallery = 'common.gallery';
+  static const common = 'common';
 
 }

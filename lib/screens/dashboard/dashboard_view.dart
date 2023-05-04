@@ -3,6 +3,8 @@ import 'package:baby_growth_tracker/routes/app_router.dart';
 import 'package:baby_growth_tracker/widgets/app_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/app_bar_animated.dart';
+
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
 
@@ -12,9 +14,7 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
 
-  final Duration pageSwipeDuration = Duration(milliseconds: 600);
-
-  List<PageRouteInfo<dynamic>> _routes = [
+  final List<PageRouteInfo<dynamic>> _routes = const [
     BabiesViewFullRoute(),
     Memories(),
     Reminders(),
@@ -23,39 +23,20 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter.pageView(
-      physics: NeverScrollableScrollPhysics(),
+    return AutoTabsRouter.tabBar(
+      physics: const NeverScrollableScrollPhysics(),
       routes: _routes,
       builder: (context, child, pageController) {
         final tabsRouter = AutoTabsRouter.of(context);
         return SafeArea(
           child: Scaffold(
-            appBar: _appBar(context),
+            appBar: const AppBarAnimated(),
             body: child,
-            bottomNavigationBar: _navBar(tabsRouter, pageController),
+            bottomNavigationBar: AppNavigationBar(
+              onTap: (index) => tabsRouter.setActiveIndex(index),
+            ),
           ),
         );
-      },
-    );
-  }
-
-  AppBar _appBar(BuildContext context) {
-    // String currentPath = context.router.urlState.flatten.path;
-    // print(currentPath);
-    return AppBar(
-      title: Text("Holaaa"),
-      leading: context.watchRouter.canPop() ? const AutoLeadingButton() : null,
-      actions: [
-        Icon(Icons.gpp_bad_outlined, size: 32,),
-      ],
-    );
-  }
-
-  AppNavigationBar _navBar(TabsRouter tabsRouter, PageController pageController) {
-    return AppNavigationBar(
-      onTap: (index) {
-        tabsRouter.setActiveIndex(index);
-        pageController.animateToPage(index, duration: pageSwipeDuration, curve: Curves.linear);
       },
     );
   }

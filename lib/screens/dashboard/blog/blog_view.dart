@@ -11,7 +11,7 @@ class BlogView extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: Colors.amber,
-      child: LocaleText(text: LocaleKeys.blog),
+      child: const LocaleText(text: LocaleKeys.tabs_blog),
     );
   }
 }

@@ -109,17 +109,17 @@ class _$AppRouter extends RootStackRouter {
             ),
             RouteConfig(
               Memories.name,
-              path: '',
+              path: 'memories-view',
               parent: DashboardRoute.name,
             ),
             RouteConfig(
               Reminders.name,
-              path: '',
+              path: 'reminder-view',
               parent: DashboardRoute.name,
             ),
             RouteConfig(
               Blog.name,
-              path: '',
+              path: 'blog-view',
               parent: DashboardRoute.name,
             ),
           ],
@@ -171,7 +171,7 @@ class Memories extends PageRouteInfo<void> {
   const Memories()
       : super(
           Memories.name,
-          path: '',
+          path: 'memories-view',
         );
 
   static const String name = 'Memories';
@@ -183,7 +183,7 @@ class Reminders extends PageRouteInfo<void> {
   const Reminders()
       : super(
           Reminders.name,
-          path: '',
+          path: 'reminder-view',
         );
 
   static const String name = 'Reminders';
@@ -195,7 +195,7 @@ class Blog extends PageRouteInfo<void> {
   const Blog()
       : super(
           Blog.name,
-          path: '',
+          path: 'blog-view',
         );
 
   static const String name = 'Blog';

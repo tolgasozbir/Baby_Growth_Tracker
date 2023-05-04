@@ -19,20 +19,20 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
 
   final List<BottomNavigationBarItem> _navBarItems = [
     BottomNavigationBarItem(
-      icon: Icon(Icons.home_outlined),
-      label: LocaleKeys.babies.locale
+      icon: const Icon(Icons.home_outlined),
+      label: LocaleKeys.tabs_babies.locale
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.favorite_outline),
-      label: LocaleKeys.memories.locale,
+      icon: const Icon(Icons.favorite_outline),
+      label: LocaleKeys.tabs_memories.locale,
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.notifications_active_outlined),
-      label: LocaleKeys.reminders.locale,
+      icon: const Icon(Icons.notifications_active_outlined),
+      label: LocaleKeys.tabs_reminders.locale,
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.my_library_books_outlined),
-      label: LocaleKeys.blog.locale,
+      icon: const Icon(Icons.my_library_books_outlined),
+      label: LocaleKeys.tabs_blog.locale,
     ),
   ];
 

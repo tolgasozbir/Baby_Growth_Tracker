@@ -34,7 +34,6 @@ part 'app_router.gr.dart';
               path: 'babies',
             ),
             AutoRoute(
-              initial: true,
               page: AddBabyView,
               path: 'addBaby',
             ),
@@ -43,17 +42,14 @@ part 'app_router.gr.dart';
         AutoRoute(
           page: MemoriesView,
           name: "memories",
-          initial: true,
         ),
         AutoRoute(
           page: ReminderView,
           name: "reminders",
-          initial: true,
         ),
         AutoRoute(
           page: BlogView,
           name: "blog",
-          initial: true,
         ),
       ],
     ),

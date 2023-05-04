@@ -1,17 +1,21 @@
 import 'dart:convert';
+import 'package:auto_route/auto_route.dart';
 import 'package:baby_growth_tracker/constants/app_styles.dart';
 import 'package:baby_growth_tracker/extensions/context_extension.dart';
+import 'package:baby_growth_tracker/extensions/string_extension.dart';
 import 'package:baby_growth_tracker/extensions/widget_extension.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
+import 'package:baby_growth_tracker/providers/babies_provider.dart';
 import 'package:baby_growth_tracker/services/image_pick_service.dart';
 import 'package:baby_growth_tracker/utilities/input_validation_mixin.dart';
-import 'package:baby_growth_tracker/utilities/user_records.dart';
 import 'package:baby_growth_tracker/widgets/app_text_form_field.dart';
 import 'package:baby_growth_tracker/widgets/bordered_button.dart';
 import 'package:baby_growth_tracker/widgets/gender_select.dart';
 import 'package:baby_growth_tracker/widgets/space_box.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../constants/app_strings.dart';
 import '../../../constants/locale_keys.g.dart';
 import '../../../widgets/locale_text.dart';
 
@@ -29,7 +33,6 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
   final TextEditingController _ageController = TextEditingController();
   Gender _gender = Gender.female;
   String? _pickedImageBase64;
-  final key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
 
   SingleChildScrollView _bodyView() {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
           babyImageCard(),
@@ -78,20 +81,20 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: _pickedImageBase64 == null 
-              ? AssetImage("assets/images/img_default_baby.jpg")
+              ? const AssetImage(AppStrings.defaultBabyImage)
               : MemoryImage(base64Decode(_pickedImageBase64!)) as ImageProvider
           )
         ),
       ),
-    ).wrapPadding(AppPaddings.padding12);
+    ).wrapPadding(AppPaddings.paddingAll12);
   }
 
   BorderedButton addPhotoButton() {
     return BorderedButton(
       padding: EdgeInsets.zero,
       child: LocaleText(
-        text: LocaleKeys.addPhoto, 
-        style: AppTextStyles.h6Regular.copyWith(color: context.colorScheme.primary)
+        text: LocaleKeys.common_addPhoto, 
+        style: AppTextStyles.h6.copyWith(color: context.colorScheme.primary)
       ),
       onPressed: () async {
         final picker = ImagePickService.instance;
@@ -107,32 +110,33 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
   Widget addBabyForm() {
     return Card(
       elevation: 8,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
       child: Form(
         key: _formKey,
         child: Column(
           children: [
             AppTextFormField(
-              labelText: "Name",
+              labelText: LocaleKeys.child_name.locale,
               controller: _nameController,
               textInputAction: TextInputAction.next,
               validator: isValid
             ),
-            SpaceBox.h16(),
+            const SpaceBox.h16(),
             AppTextFormField(
-              labelText: "Age",
+              labelText: LocaleKeys.child_age.locale,
               controller: _ageController,
               onlyDigits: true,
+              maxLength: 1,
               validator: isValid
             ),
-            SpaceBox.h16(),
-            GenderSelect(onChanged: (Gender gender) => print(gender),),
-            SpaceBox.h16(),
+            const SpaceBox.h16(),
+            GenderSelect(onChanged: (Gender gender) => _gender = gender),
+            const SpaceBox.h16(),
             saveButton(),
           ],
-        ).wrapPadding(AppPaddings.padding8),
+        ).wrapPadding(AppPaddings.paddingAll8),
       ),
-    ).wrapPadding(AppPaddings.padding8);
+    ).wrapPadding(AppPaddings.paddingAll8);
   }
 
   BorderedButton saveButton() {
@@ -144,21 +148,21 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
       padding: EdgeInsets.zero,
       borderWidth: 2,
       child: LocaleText(
-        text: LocaleKeys.add, 
-        style: AppTextStyles.h4Regular.copyWith(color: context.colorScheme.onSecondary)
+        text: LocaleKeys.common_add, 
+        style: AppTextStyles.h4.copyWith(color: context.colorScheme.onSecondary)
       ), 
-      onPressed: () {
+      onPressed: () async {
         final isValid = _formKey.currentState?.validate();
         if (isValid == null || !isValid) return;
-        UserRecords.instance.babyList.add(
-          Baby(
-            id: 5, 
-            name: _nameController.text.trim(), 
-            age: int.tryParse(_ageController.text) ?? 0, 
-            gender: _gender.name,
-            profileImage: _pickedImageBase64,
-          ),
+        var baby = Baby(
+          id: 5, 
+          name: _nameController.text.trim(), 
+          age: int.tryParse(_ageController.text) ?? 0, 
+          gender: _gender.name,
+          profileImage: _pickedImageBase64,
         );
+        await context.read<BabiesProvider>().addBaby(baby);
+        context.router.pop();
       },
     );
   }

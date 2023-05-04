@@ -9,9 +9,9 @@ extension GenderExtension on Gender{
   String get getLocaleName {
     switch (this) {
       case Gender.female:
-        return LocaleKeys.gfemale;
+        return LocaleKeys.child_gfemale;
       case Gender.male:
-        return LocaleKeys.gmale;
+        return LocaleKeys.child_gmale;
     }
   } 
 }
@@ -27,7 +27,7 @@ class GenderSelect extends StatefulWidget {
 
 class _GenderSelectState extends State<GenderSelect> {
   Gender _genderValue = Gender.female;
-  double _iconSize = 80;
+  final double _iconSize = 80;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _GenderSelectState extends State<GenderSelect> {
                 ),
             LocaleText(
               text: gender.getLocaleName, 
-              style: AppTextStyles.h5Bold.copyWith(color: Colors.black54)
+              style: AppTextStyles.h5.copyWith(color: Colors.black54)
             ),
           ],
         ),

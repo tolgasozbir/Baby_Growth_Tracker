@@ -13,7 +13,7 @@ class MemoriesView extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: Colors.red,
-      child: LocaleText(text: LocaleKeys.memories),
+      child: const LocaleText(text: LocaleKeys.tabs_memories),
     );
   }
 }
