@@ -77,9 +77,9 @@ class BabyCard extends StatelessWidget {
   }
 
   Column genderAndArrowIcon(String gender) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         Icon(Icons.male, color: Color(0xffAAAAAA), size: 56,),
         Icon(Icons.chevron_right, color: Color(0xFF3D3082), size: 56,),
       ],
