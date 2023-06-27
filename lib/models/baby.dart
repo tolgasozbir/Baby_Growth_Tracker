@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'base_model.dart';
 
-class Baby {
+@immutable
+class Baby extends IBaseModel<Baby> {
   final int id;
   final String name;
   final int age;
@@ -17,17 +20,6 @@ class Baby {
     this.photoAlbum,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'age': age,
-      'gender': gender,
-      'profileImage': profileImage,
-      'photoAlbum': photoAlbum,
-    };
-  }
-
   factory Baby.fromMap(Map<String, dynamic> map) {
     return Baby(
       id: map['id'] as int,
@@ -39,7 +31,23 @@ class Baby {
     );
   }
 
+  factory Baby.fromJson(String source) => Baby.fromMap(json.decode(source) as Map<String, dynamic>);
+
   String toJson() => json.encode(toMap());
 
-  factory Baby.fromJson(String source) => Baby.fromMap(json.decode(source) as Map<String, dynamic>);
+  @override
+  Baby fromMap(Map<String, dynamic> map) {
+    return Baby.fromMap(map);
+  }
+
+  @override
+  Map<String, dynamic> toMap() => {
+    'id': id,
+    'name': name,
+    'age': age,
+    'gender': gender,
+    'profileImage': profileImage,
+    'photoAlbum': photoAlbum,
+  };
+  
 }

@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:baby_growth_tracker/constants/app_strings.dart';
 import 'package:baby_growth_tracker/constants/locale_keys.g.dart';
+import 'package:baby_growth_tracker/screens/dashboard/babies/components/wave_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
 
-import '../constants/app_styles.dart';
-import 'locale_text.dart';
+import '../../../../constants/app_styles.dart';
+import '../../../../widgets/locale_text.dart';
 
 class BabyCard extends StatelessWidget {
   const BabyCard({super.key, required this.baby});
@@ -86,31 +87,4 @@ class BabyCard extends StatelessWidget {
     );
   }
   
-}
-
-class WavePainter extends CustomPainter{
-  @override
-  void paint(Canvas canvas, Size size) {
-    final width = size.width;
-    final height = size.height;
-
-    Paint paint = Paint()
-      ..color = const Color(0xFFE7E7E7)
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 1;
-
-    Path path = Path();
-    path.moveTo(width, 0);
-    path.lineTo(width, height * 0.5);
-    path.quadraticBezierTo(width * 0.7, height * 0.28, width * 0.5, height * 0.67);
-    path.quadraticBezierTo(width* 0.25, height * 1,0, height * 0.64);
-    path.lineTo(0,0);
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
 }

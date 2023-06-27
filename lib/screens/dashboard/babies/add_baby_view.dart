@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:baby_growth_tracker/constants/app_styles.dart';
 import 'package:baby_growth_tracker/extensions/context_extension.dart';
 import 'package:baby_growth_tracker/extensions/string_extension.dart';
-import 'package:baby_growth_tracker/extensions/widget_extension.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
 import 'package:baby_growth_tracker/providers/babies_provider.dart';
 import 'package:baby_growth_tracker/services/image_pick_service.dart';
@@ -59,7 +58,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
         height: context.dynamicWidth(0.44),
         width: context.dynamicWidth(0.64),
         child: Card(
-          elevation: 8,
+          elevation: 4,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           child: Column(
             children: [
@@ -72,26 +71,29 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
   }
 
   Widget circleImage() {
-    return SizedBox.square(
-      dimension: context.dynamicHeight(0.14),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: context.colorScheme.primary, width: 3.0),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: _pickedImageBase64 == null 
-              ? const AssetImage(AppStrings.defaultBabyImage)
-              : MemoryImage(base64Decode(_pickedImageBase64!)) as ImageProvider
-          )
+    return Padding(
+      padding: AppPaddings.paddingAll12,
+      child: SizedBox.square(
+        dimension: context.dynamicHeight(0.14),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: context.colorScheme.primary, width: 3.0),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: _pickedImageBase64 == null 
+                ? const AssetImage(AppStrings.defaultBabyImage)
+                : MemoryImage(base64Decode(_pickedImageBase64!)) as ImageProvider
+            )
+          ),
         ),
       ),
-    ).wrapPadding(AppPaddings.paddingAll12);
+    );
   }
 
   BorderedButton addPhotoButton() {
     return BorderedButton(
-      padding: EdgeInsets.zero,
+      padding: AppPaddings.paddingNone,
       child: LocaleText(
         text: LocaleKeys.common_addPhoto, 
         style: AppTextStyles.h6.copyWith(color: context.colorScheme.primary)
@@ -108,35 +110,41 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
   }
 
   Widget addBabyForm() {
-    return Card(
-      elevation: 8,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            AppTextFormField(
-              labelText: LocaleKeys.child_name.locale,
-              controller: _nameController,
-              textInputAction: TextInputAction.next,
-              validator: isValid
+    return Padding(
+      padding: AppPaddings.paddingAll8,
+      child: Card(
+        elevation: 4,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: AppPaddings.paddingAll8,
+            child: Column(
+              children: [
+                AppTextFormField(
+                  labelText: LocaleKeys.child_name.locale,
+                  controller: _nameController,
+                  textInputAction: TextInputAction.next,
+                  validator: isValid
+                ),
+                const SpaceBox.h16(),
+                AppTextFormField(
+                  labelText: LocaleKeys.child_age.locale,
+                  controller: _ageController,
+                  onlyDigits: true,
+                  maxLength: 1,
+                  validator: isValid
+                ),
+                const SpaceBox.h16(),
+                GenderSelect(onChanged: (Gender gender) => _gender = gender),
+                const SpaceBox.h16(),
+                saveButton(),
+              ],
             ),
-            const SpaceBox.h16(),
-            AppTextFormField(
-              labelText: LocaleKeys.child_age.locale,
-              controller: _ageController,
-              onlyDigits: true,
-              maxLength: 1,
-              validator: isValid
-            ),
-            const SpaceBox.h16(),
-            GenderSelect(onChanged: (Gender gender) => _gender = gender),
-            const SpaceBox.h16(),
-            saveButton(),
-          ],
-        ).wrapPadding(AppPaddings.paddingAll8),
+          )
+        ),
       ),
-    ).wrapPadding(AppPaddings.paddingAll8);
+    );
   }
 
   BorderedButton saveButton() {
