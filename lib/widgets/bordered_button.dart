@@ -1,5 +1,5 @@
+import 'package:baby_growth_tracker/constants/app_styles.dart';
 import 'package:baby_growth_tracker/extensions/context_extension.dart';
-import 'package:baby_growth_tracker/extensions/widget_extension.dart';
 import 'package:flutter/material.dart';
 
 class BorderedButton extends StatelessWidget {
@@ -30,22 +30,28 @@ class BorderedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: btnWidth,
-      height: btnHeight,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: splashColor,
-          backgroundColor: backgroundColor,
-          shape: const StadiumBorder(),
-          side: BorderSide(
-            color: borderColor ?? context.colorScheme.primary,
-            width: borderWidth ?? 1.6,
+    return Padding(
+      padding: padding ?? AppPaddings.paddingAll8,
+      child: SizedBox(
+        width: btnWidth,
+        height: btnHeight,
+        child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: splashColor,
+            backgroundColor: backgroundColor,
+            shape: const StadiumBorder(),
+            side: BorderSide(
+              color: borderColor ?? context.colorScheme.primary,
+              width: borderWidth ?? 1.6,
+            ),
           ),
+          onPressed: onPressed,
+          child: Padding(
+            padding: margin ?? AppPaddings.BorderedButtonPadding,
+            child: child,
+          )
         ),
-        onPressed: onPressed,
-        child: child.wrapPadding(margin ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 48)),
       ),
-    ).wrapPadding(padding ?? const EdgeInsets.all(8.0));
+    );
   }
 }

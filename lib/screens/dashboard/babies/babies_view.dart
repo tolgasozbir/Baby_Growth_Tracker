@@ -4,7 +4,7 @@ import 'package:baby_growth_tracker/providers/babies_provider.dart';
 import 'package:baby_growth_tracker/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../widgets/baby_card.dart';
+import 'components/baby_card.dart';
 
 class BabiesView extends StatefulWidget {
   const BabiesView({Key? key}) : super(key: key);
@@ -17,11 +17,15 @@ class _BabiesViewState extends State<BabiesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.router.push(const AddBabyRoute()),
-        child: const Icon(Icons.add,),
-      ),
+      floatingActionButton: fab(),
       body: _bodyView(),
+    );
+  }
+
+  FloatingActionButton fab() {
+    return FloatingActionButton(
+      onPressed: () => context.router.push(const AddBabyRoute()),
+      child: const Icon(Icons.add,),
     );
   }
 
