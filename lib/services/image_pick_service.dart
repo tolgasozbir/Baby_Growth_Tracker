@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../constants/locale_keys.g.dart';
@@ -13,15 +14,27 @@ class ImagePickService {
   static ImagePickService? _instance;
   static ImagePickService get instance => _instance ??= ImagePickService._();
 
-  final ImagePicker _imagePicker = ImagePicker();
+  final _imagePicker = ImagePicker();
+  final _cropper = ImageCropper();
 
   Future<String?> pick(ImageSource source) async {
     try {
       final PickedFile? pickedImage = await _imagePicker.getImage(source: source);
       if (pickedImage == null) return null;
-      return base64Encode(await pickedImage.readAsBytes());
+
+      var croppedImage = await _cropper.cropImage(
+        sourcePath: pickedImage.path,
+        uiSettings: [
+          AndroidUiSettings(lockAspectRatio: false,),
+          IOSUiSettings(aspectRatioLockEnabled: false),
+        ],
+        compressQuality: 50,
+      );
+      if (croppedImage == null) return null;
+
+      return base64Encode(await croppedImage.readAsBytes());
     } on PlatformException catch (e) {
-      print("Resim Seçilemedi $e");
+      print("Image not selected $e");
       return null;
     }
   }
