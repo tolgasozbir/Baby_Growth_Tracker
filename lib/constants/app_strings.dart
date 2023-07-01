@@ -6,7 +6,6 @@ class AppStrings {
   //Language Constants
   static const lang_path = 'assets/lang';
 
-  // ignore: constant_identifier_names
   static const _tr_locale = Locale("tr", "TR");
   static const _en_locale = Locale("en", "US");
 
