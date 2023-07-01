@@ -11,15 +11,25 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #Icons
   cupertino_icons: ^1.0.2
-  flutter_spinkit: ^5.1.0
+
+  #State Management
   provider: ^6.0.4
+
+  #Routing
   auto_route: ^5.0.4
-  google_nav_bar: ^5.0.6
-  flutter_snake_navigationbar: ^0.6.1
-  image_picker: ^0.7.2+1
+
+  #Localization
   easy_localization: ^3.0.2
+
+  #Caching
   shared_preferences: ^2.1.0
+
+  #Utils
+  flutter_snake_navigationbar: ^0.6.1
+  flutter_spinkit: ^5.1.0
+  image_picker: ^0.7.2+1
   image_cropper: ^5.0.0
 
 
