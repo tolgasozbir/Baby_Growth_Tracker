@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:baby_growth_tracker/constants/app_strings.dart';
 import 'package:baby_growth_tracker/constants/locale_keys.g.dart';
@@ -48,7 +48,7 @@ class BabyCard extends StatelessWidget {
           radius: 40,
           backgroundImage: baby.profileImage == null 
             ? const AssetImage(AppStrings.defaultBabyImage)
-            : MemoryImage(base64Decode(baby.profileImage!)) as ImageProvider
+            : FileImage(File(baby.profileImage!)) as ImageProvider
         ),
       ),
     );

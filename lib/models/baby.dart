@@ -1,15 +1,13 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'base_model.dart';
 
-@immutable
 class Baby extends IBaseModel<Baby> {
   final int id;
   final String name;
   final int age;
   final String gender;
   final String? profileImage;
-  final List<String>? photoAlbum;
+  final List<String> photoAlbum;
 
   Baby({
     required this.id,
@@ -17,7 +15,7 @@ class Baby extends IBaseModel<Baby> {
     required this.age,
     required this.gender,
     this.profileImage,
-    this.photoAlbum,
+    required this.photoAlbum,
   });
 
   factory Baby.fromMap(Map<String, dynamic> map) {
@@ -27,7 +25,7 @@ class Baby extends IBaseModel<Baby> {
       age: map['age'] as int,
       gender: map['gender'] as String,
       profileImage: map['profileImage'] != null ? map['profileImage'] as String : null,
-      photoAlbum: map['photoAlbum'] != null ? List<String>.from((map['photoAlbum'] as List<String>)) : null,
+      photoAlbum: List<String>.from((map['photoAlbum'] as List<dynamic>)),
     );
   }
 

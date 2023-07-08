@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class ImagePickService {
 
   Future<String?> pick(ImageSource source) async {
     try {
-      final PickedFile? pickedImage = await _imagePicker.getImage(source: source);
+      final XFile? pickedImage =  await _imagePicker.pickImage(source: source);
       if (pickedImage == null) return null;
 
       var croppedImage = await _cropper.cropImage(
@@ -28,14 +27,24 @@ class ImagePickService {
           AndroidUiSettings(lockAspectRatio: false,),
           IOSUiSettings(aspectRatioLockEnabled: false),
         ],
-        compressQuality: 50,
+        compressQuality: 80,
       );
       if (croppedImage == null) return null;
 
-      return base64Encode(await croppedImage.readAsBytes());
+      return croppedImage.path;
     } on PlatformException catch (e) {
       print("Image not selected $e");
       return null;
+    }
+  }
+
+  Future<List<String>> pickMultiple() async {
+    try {
+      final List<XFile> pickedImages =  await _imagePicker.pickMultiImage();
+      return pickedImages.map((e) => e.path).toList();
+    } on PlatformException catch (e) {
+      print("Image not selected $e");
+      return [];
     }
   }
 

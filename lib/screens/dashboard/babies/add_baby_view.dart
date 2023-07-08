@@ -1,4 +1,6 @@
-import 'dart:convert';
+
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:baby_growth_tracker/constants/app_styles.dart';
 import 'package:baby_growth_tracker/extensions/context_extension.dart';
@@ -31,7 +33,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   Gender _gender = Gender.female;
-  String? _pickedImageBase64;
+  String? _pickedImagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -81,9 +83,9 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
             border: Border.all(color: context.colorScheme.primary, width: 3.0),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: _pickedImageBase64 == null 
+              image: _pickedImagePath == null 
                 ? const AssetImage(AppStrings.defaultBabyImage)
-                : MemoryImage(base64Decode(_pickedImageBase64!)) as ImageProvider
+                : FileImage(File(_pickedImagePath!)) as ImageProvider
             )
           ),
         ),
@@ -102,7 +104,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
         final picker = ImagePickService.instance;
         final pickSource = await picker.showImageSource(context);
         if (pickSource != null) {
-          _pickedImageBase64 = await picker.pick(pickSource);
+          _pickedImagePath = await picker.pick(pickSource);
           setState(() { });
         }
       },
@@ -167,7 +169,8 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
           name: _nameController.text.trim(), 
           age: int.tryParse(_ageController.text) ?? 0, 
           gender: _gender.name,
-          profileImage: _pickedImageBase64,
+          profileImage: _pickedImagePath,
+          photoAlbum: [],
         );
         await context.read<BabiesProvider>().addBaby(baby);
         context.router.pop();
