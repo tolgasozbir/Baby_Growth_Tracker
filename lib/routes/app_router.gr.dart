@@ -65,6 +65,19 @@ class _$AppRouter extends RootStackRouter {
         child: const AddBabyView(),
       );
     },
+    BabyDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<BabyDetailRouteArgs>();
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: BabyDetailView(
+          key: args.key,
+          baby: args.baby,
+        ),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
   };
 
   @override
@@ -103,6 +116,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   AddBabyRoute.name,
                   path: 'addBaby',
+                  parent: BabiesViewFullRoute.name,
+                ),
+                RouteConfig(
+                  BabyDetailRoute.name,
+                  path: 'babyDetail',
                   parent: BabiesViewFullRoute.name,
                 ),
               ],
@@ -223,4 +241,38 @@ class AddBabyRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddBabyRoute';
+}
+
+/// generated route for
+/// [BabyDetailView]
+class BabyDetailRoute extends PageRouteInfo<BabyDetailRouteArgs> {
+  BabyDetailRoute({
+    Key? key,
+    required Baby baby,
+  }) : super(
+          BabyDetailRoute.name,
+          path: 'babyDetail',
+          args: BabyDetailRouteArgs(
+            key: key,
+            baby: baby,
+          ),
+        );
+
+  static const String name = 'BabyDetailRoute';
+}
+
+class BabyDetailRouteArgs {
+  const BabyDetailRouteArgs({
+    this.key,
+    required this.baby,
+  });
+
+  final Key? key;
+
+  final Baby baby;
+
+  @override
+  String toString() {
+    return 'BabyDetailRouteArgs{key: $key, baby: $baby}';
+  }
 }

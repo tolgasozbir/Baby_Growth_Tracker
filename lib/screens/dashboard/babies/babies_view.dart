@@ -33,7 +33,10 @@ class _BabiesViewState extends State<BabiesView> {
     return ListView(
       padding: AppPaddings.paddingAll8,
       physics: const BouncingScrollPhysics(),
-      children: context.watch<BabiesProvider>().babyList.map((e) => BabyCard(baby: e)).toList(),
+      children: context.watch<BabiesProvider>().babyList.map((e) => GestureDetector(
+        onTap: () => context.router.push(BabyDetailRoute(baby: e)),
+        child: BabyCard(baby: e),
+      )).toList(),
     );
   }
 }

@@ -18,14 +18,15 @@ class BabiesProvider extends ChangeNotifier {
     _babyList.addAll(cachedList);
   }
   
-  Future<void> _saveToCache() async {
+  Future<void> saveToCache() async {
     List<String> babyListStr = _babyList.map((e) => e.toJson()).toList();
     await _cacheService.setCache<List<String>>(CacheKey.BabyList, babyListStr);
+    notifyListeners();
   }
 
   Future<void> addBaby(Baby baby) async {
     _babyList.add(baby);
-    await _saveToCache();
+    await saveToCache();
     notifyListeners();
   }
 
