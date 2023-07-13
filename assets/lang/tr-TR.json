@@ -20,5 +20,9 @@
         "add" : "Ekle",
         "camera" : "Kamera",
         "gallery" : "Galeri"
+    },
+
+    "errorMsg" : {
+        "empty" : "Bu alan boş olamaz"
     }
 }

@@ -8,7 +8,7 @@ import 'package:baby_growth_tracker/extensions/string_extension.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
 import 'package:baby_growth_tracker/providers/babies_provider.dart';
 import 'package:baby_growth_tracker/services/image_pick_service.dart';
-import 'package:baby_growth_tracker/utilities/input_validation_mixin.dart';
+import 'package:baby_growth_tracker/mixins/input_validation_mixin.dart';
 import 'package:baby_growth_tracker/widgets/app_text_form_field.dart';
 import 'package:baby_growth_tracker/widgets/bordered_button.dart';
 import 'package:baby_growth_tracker/widgets/gender_select.dart';
