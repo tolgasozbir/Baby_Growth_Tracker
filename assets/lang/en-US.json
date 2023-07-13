@@ -20,5 +20,9 @@
         "add" : "Add",
         "camera" : "Camera",
         "gallery" : "Gallery"
+    },
+
+    "errorMsg" : {
+        "empty" : "Cannot be empty"
     }
 }
