@@ -17,6 +17,8 @@ abstract class  LocaleKeys {
   static const common_add = 'common.add';
   static const common_camera = 'common.camera';
   static const common_gallery = 'common.gallery';
+  static const common_delete = 'common.delete';
+  static const common_back = 'common.back';
   static const common = 'common';
   static const errorMsg_empty = 'errorMsg.empty';
   static const errorMsg = 'errorMsg';

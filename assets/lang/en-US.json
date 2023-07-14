@@ -19,7 +19,9 @@
         "addPhoto" : "Add Photo",
         "add" : "Add",
         "camera" : "Camera",
-        "gallery" : "Gallery"
+        "gallery" : "Gallery",
+        "delete" : "Delete",
+        "back" : "Back"
     },
 
     "errorMsg" : {

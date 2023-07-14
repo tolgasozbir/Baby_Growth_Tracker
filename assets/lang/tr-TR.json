@@ -19,7 +19,9 @@
         "addPhoto" : "Fotoğraf Ekle",
         "add" : "Ekle",
         "camera" : "Kamera",
-        "gallery" : "Galeri"
+        "gallery" : "Galeri",
+        "delete" : "Sil",
+        "back" : "Geri Dön"
     },
 
     "errorMsg" : {
