@@ -16,6 +16,7 @@ class AppPaddings {
   AppPaddings._();
 
   static const paddingNone = EdgeInsets.zero;
+  static const paddingAll4 = EdgeInsets.all(4.0);
   static const paddingAll8 = EdgeInsets.all(8.0);
   static const paddingAll12 = EdgeInsets.all(12.0);
 

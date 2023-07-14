@@ -12,7 +12,7 @@ class BorderedButton extends StatelessWidget {
     this.borderWidth, 
     this.margin, 
     this.padding, 
-    this.splashColor,
+    this.foregroundColor,
     required this.child, 
     required this.onPressed
   });
@@ -24,7 +24,7 @@ class BorderedButton extends StatelessWidget {
   final double? borderWidth;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
-  final Color? splashColor;
+  final Color? foregroundColor;
   final Widget child;
   final VoidCallback onPressed;
 
@@ -37,7 +37,7 @@ class BorderedButton extends StatelessWidget {
         height: btnHeight,
         child: OutlinedButton(
           style: OutlinedButton.styleFrom(
-            foregroundColor: splashColor,
+            foregroundColor: foregroundColor,
             backgroundColor: backgroundColor,
             shape: const StadiumBorder(),
             side: BorderSide(

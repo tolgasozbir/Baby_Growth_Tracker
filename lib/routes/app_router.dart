@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:baby_growth_tracker/screens/dashboard/babies/add_baby_view.dart';
 import 'package:baby_growth_tracker/screens/dashboard/babies/babies_view.dart';
-import 'package:baby_growth_tracker/screens/dashboard/babies/baby_detail/baby_detail_veiw.dart';
+import 'package:baby_growth_tracker/screens/dashboard/babies/baby_detail/baby_album_view.dart';
 import 'package:baby_growth_tracker/screens/dashboard/blog/blog_view.dart';
 import 'package:baby_growth_tracker/screens/dashboard/dashboard_view.dart';
 import 'package:baby_growth_tracker/screens/dashboard/reminders/reminders_view.dart';

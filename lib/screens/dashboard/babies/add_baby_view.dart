@@ -154,7 +154,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
       btnWidth: context.dynamicWidth(0.56),
       backgroundColor: context.colorScheme.primary,
       borderColor: context.colorScheme.onPrimary,
-      splashColor: context.colorScheme.onPrimary,
+      foregroundColor: context.colorScheme.onPrimary,
       padding: EdgeInsets.zero,
       borderWidth: 2,
       child: LocaleText(
