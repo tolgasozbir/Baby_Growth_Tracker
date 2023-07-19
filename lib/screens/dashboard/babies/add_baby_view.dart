@@ -74,7 +74,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
 
   Widget circleImage() {
     return Padding(
-      padding: AppPaddings.paddingAll12,
+      padding: AppPaddings.all12,
       child: SizedBox.square(
         dimension: context.dynamicHeight(0.14),
         child: DecoratedBox(
@@ -84,7 +84,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: _pickedImagePath == null 
-                ? const AssetImage(AppStrings.defaultBabyImage)
+                ? AssetImage(AppAssets.defaultBabyImage.path)
                 : FileImage(File(_pickedImagePath!)) as ImageProvider
             )
           ),
@@ -95,7 +95,7 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
 
   BorderedButton addPhotoButton() {
     return BorderedButton(
-      padding: AppPaddings.paddingNone,
+      padding: AppPaddings.none,
       child: LocaleText(
         text: LocaleKeys.common_addPhoto, 
         style: AppTextStyles.h6.copyWith(color: context.colorScheme.primary)
@@ -113,14 +113,14 @@ class _AddBabyViewState extends State<AddBabyView> with InputValidationMixin {
 
   Widget addBabyForm() {
     return Padding(
-      padding: AppPaddings.paddingAll8,
+      padding: AppPaddings.all8,
       child: Card(
         elevation: 4,
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: AppPaddings.paddingAll8,
+            padding: AppPaddings.all8,
             child: Column(
               children: [
                 AppTextFormField(

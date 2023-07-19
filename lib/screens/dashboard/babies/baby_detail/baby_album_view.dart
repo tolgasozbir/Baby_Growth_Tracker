@@ -37,7 +37,7 @@ class _BabyDetailViewState extends BabyAlbumViewModel {
 
   Widget bodyView() {
     return Padding(
-      padding: AppPaddings.paddingAll8,
+      padding: AppPaddings.all8,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -55,11 +55,11 @@ class _BabyDetailViewState extends BabyAlbumViewModel {
       radius: profilePicRadius,
       backgroundColor: context.colorScheme.primary,
       child: Padding(
-        padding: AppPaddings.paddingAll4,
+        padding: AppPaddings.all4,
         child: ClipOval(
           child: widget.baby.profileImage == null 
             ? Image.asset(
-                AppStrings.defaultBabyImage, 
+                AppAssets.defaultBabyImage.path, 
                 fit: BoxFit.cover,
                 height: profilePicRadius * 2,
               )

@@ -2,6 +2,7 @@ import 'package:baby_growth_tracker/constants/app_strings.dart';
 import 'package:baby_growth_tracker/providers/babies_provider.dart';
 import 'package:baby_growth_tracker/services/app_services.dart';
 import 'package:baby_growth_tracker/theme/app_theme.dart';
+import 'package:baby_growth_tracker/utilities/localization_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,9 +18,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: ((context) => BabiesProvider())),
       ],
-      child: EasyLocalization(
-        supportedLocales: AppStrings.supportedLocales,
-        path: AppStrings.lang_path,
+      child: LocalizationManager(
         child: MyApp(),
       ),
     ),

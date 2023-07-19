@@ -1,21 +1,14 @@
-import 'package:flutter/material.dart';
-
 class AppStrings {
+  const AppStrings._();
+
   static const appName = 'Baby Growth Tracker';
+}
 
-  //Language Constants
-  static const lang_path = 'assets/lang';
+enum AppAssets {
+  splashIcon('assets/icons/ic_splash.png'),
+  defaultBabyImage('assets/images/img_default_baby.jpg');
 
-  static const _tr_locale = Locale("tr", "TR");
-  static const _en_locale = Locale("en", "US");
+  final String path;
 
-  static const List<Locale> supportedLocales = [
-    _tr_locale, 
-    _en_locale
-  ];
-
-  //Assets Constants
-  static const splashIcon = "assets/icons/ic_splash.png";
-  static const defaultBabyImage = "assets/images/img_default_baby.jpg";
-
+  const AppAssets(this.path);
 }

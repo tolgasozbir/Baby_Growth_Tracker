@@ -18,7 +18,7 @@ class _SplashViewState extends SplashViewModel {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(AppStrings.splashIcon),
+          Image.asset(AppAssets.splashIcon.path),
           const SpinKitSpinningLines(color: Colors.black),
         ],
       ),

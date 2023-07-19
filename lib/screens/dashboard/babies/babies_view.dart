@@ -31,7 +31,7 @@ class _BabiesViewState extends State<BabiesView> {
 
   Widget _bodyView() {
     return ListView(
-      padding: AppPaddings.paddingAll8,
+      padding: AppPaddings.all8,
       physics: const BouncingScrollPhysics(),
       children: context.watch<BabiesProvider>().babyList.map((e) => GestureDetector(
         onTap: () => context.router.push(BabyDetailRoute(baby: e)),
