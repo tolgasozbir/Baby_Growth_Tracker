@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//TODO: THEME
+
 class AppTextStyles {
   AppTextStyles._();
 

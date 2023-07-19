@@ -13,14 +13,18 @@ abstract class BabyAlbumViewModel extends State<BabyDetailView> with ScreenUpdat
   final albumGridCrossAxisCount = 3;
   final albumGridAspecRatio = 1/1;
   final albumGridItemCount = 99;
+  final gridAnimationDuration = const Duration(milliseconds: 1200);
 
   @override
   void initState() {
     super.initState();
-    
   }
 
   void fabBtnFn() async {
+    if (widget.baby.photoAlbum.length == albumGridItemCount) {
+      return;
+      //TODO: Snackbar
+    }
     var pickedImages = await ImagePickService.instance.pickMultiple();
     widget.baby.photoAlbum.addAll(pickedImages);
     await context.read<BabiesProvider>().saveToCache();

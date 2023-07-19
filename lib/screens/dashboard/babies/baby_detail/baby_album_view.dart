@@ -5,6 +5,7 @@ import 'package:baby_growth_tracker/extensions/context_extension.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
 import 'package:baby_growth_tracker/widgets/locale_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../../constants/app_strings.dart';
 import 'baby_album_view_model.dart';
@@ -55,9 +56,13 @@ class _BabyDetailViewState extends BabyAlbumViewModel {
       backgroundColor: context.colorScheme.primary,
       child: Padding(
         padding: AppPaddings.paddingAll4,
-        child: ClipOval(  
+        child: ClipOval(
           child: widget.baby.profileImage == null 
-            ? Image.asset(AppStrings.defaultBabyImage)
+            ? Image.asset(
+                AppStrings.defaultBabyImage, 
+                fit: BoxFit.cover,
+                height: profilePicRadius * 2,
+              )
             : Image.file(
                 File(widget.baby.profileImage!),
                 errorBuilder: (context, error, stackTrace) => notFoundIcon(),
@@ -81,16 +86,27 @@ class _BabyDetailViewState extends BabyAlbumViewModel {
     );
   }
 
-  GridView albumGrid() {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: albumGridCrossAxisCount,
-        childAspectRatio: albumGridAspecRatio,
+  Widget albumGrid() {
+    return AnimationLimiter(
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: albumGridCrossAxisCount,
+          childAspectRatio: albumGridAspecRatio,
+        ),
+        itemCount: albumGridItemCount,
+        itemBuilder: (BuildContext context, int index) => AnimationConfiguration.staggeredGrid(
+          position: index,
+          columnCount: albumGridCrossAxisCount,
+          duration: gridAnimationDuration,
+          child: SlideAnimation(
+            child: FadeInAnimation(
+              child: albumCard(index),
+            ),
+          ),
+        ),
       ),
-      itemCount: albumGridItemCount,
-      itemBuilder: (BuildContext context, int index) => albumCard(index),
     );
   }
 
