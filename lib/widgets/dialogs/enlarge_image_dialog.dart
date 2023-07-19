@@ -24,7 +24,7 @@ Future<bool?> showEnlargedImage(BuildContext context, Widget imageWidget) async 
                       backgroundColor: context.colorScheme.primary,
                       foregroundColor: context.colorScheme.onSecondary,
                       borderColor: context.colorScheme.onPrimary,
-                      margin: AppPaddings.paddingAll12,
+                      margin: AppPaddings.all12,
                       child: const LocaleText(text: LocaleKeys.common_delete), 
                       onPressed: () => Navigator.pop(context, true),
                     ),
@@ -32,7 +32,7 @@ Future<bool?> showEnlargedImage(BuildContext context, Widget imageWidget) async 
                   Expanded(
                     child: BorderedButton(
                       backgroundColor: context.colorScheme.onSecondary,
-                      margin: AppPaddings.paddingAll12,
+                      margin: AppPaddings.all12,
                       child: const LocaleText(text: LocaleKeys.common_back), 
                       onPressed: () =>  Navigator.pop(context),
                     ),

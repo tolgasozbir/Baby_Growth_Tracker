@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
-  AppTextStyles._();
+  const AppTextStyles._();
 
   static const h1 = TextStyle(fontSize: 34, fontWeight: FontWeight.bold, height: 1.5);
   static const h2 = TextStyle(fontSize: 28, fontWeight: FontWeight.w400, height: 1.5);
@@ -13,13 +13,13 @@ class AppTextStyles {
 }
 
 class AppPaddings {
-  AppPaddings._();
+  const AppPaddings._();
 
-  static const paddingNone = EdgeInsets.zero;
-  static const paddingAll4 = EdgeInsets.all(4.0);
-  static const paddingAll8 = EdgeInsets.all(8.0);
-  static const paddingAll12 = EdgeInsets.all(12.0);
+  static const none = EdgeInsets.zero;
+  static const all4 = EdgeInsets.all(4.0);
+  static const all8 = EdgeInsets.all(8.0);
+  static const all12 = EdgeInsets.all(12.0);
 
   //Specific
-  static const BorderedButtonPadding = EdgeInsets.symmetric(vertical: 12, horizontal: 48);
+  static const borderedButton = EdgeInsets.symmetric(vertical: 12, horizontal: 48);
 }

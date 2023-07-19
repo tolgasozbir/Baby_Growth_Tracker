@@ -31,7 +31,7 @@ class BorderedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding ?? AppPaddings.paddingAll8,
+      padding: padding ?? AppPaddings.all8,
       child: SizedBox(
         width: btnWidth,
         height: btnHeight,
@@ -47,7 +47,7 @@ class BorderedButton extends StatelessWidget {
           ),
           onPressed: onPressed,
           child: Padding(
-            padding: margin ?? AppPaddings.BorderedButtonPadding,
+            padding: margin ?? AppPaddings.borderedButton,
             child: child,
           )
         ),

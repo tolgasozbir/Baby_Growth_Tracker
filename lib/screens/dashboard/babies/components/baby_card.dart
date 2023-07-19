@@ -47,7 +47,7 @@ class BabyCard extends StatelessWidget {
         child: CircleAvatar(
           radius: 40,
           backgroundImage: baby.profileImage == null 
-            ? const AssetImage(AppStrings.defaultBabyImage)
+            ? AssetImage(AppAssets.defaultBabyImage.path)
             : FileImage(File(baby.profileImage!)) as ImageProvider
         ),
       ),
