@@ -21,7 +21,8 @@
         "camera" : "Kamera",
         "gallery" : "Galeri",
         "delete" : "Sil",
-        "back" : "Geri Dön"
+        "back" : "Geri Dön",
+        "change" : "Değiştir"
     },
 
     "errorMsg" : {

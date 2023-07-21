@@ -1,13 +1,16 @@
 import 'dart:io';
 
 import 'package:baby_growth_tracker/constants/app_styles.dart';
+import 'package:baby_growth_tracker/constants/locale_keys.g.dart';
 import 'package:baby_growth_tracker/extensions/context_extension.dart';
 import 'package:baby_growth_tracker/models/baby.dart';
 import 'package:baby_growth_tracker/widgets/locale_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../../constants/app_strings.dart';
+import '../../../../widgets/context_menu.dart';
 import 'baby_album_view_model.dart';
 
 class BabyDetailView extends StatefulWidget {
@@ -50,26 +53,68 @@ class _BabyDetailViewState extends BabyAlbumViewModel {
     );
   }
 
-  CircleAvatar profilePic() {
-    return CircleAvatar(
-      radius: profilePicRadius,
-      backgroundColor: context.colorScheme.primary,
-      child: Padding(
-        padding: AppPaddings.all4,
-        child: ClipOval(
-          child: widget.baby.profileImage == null 
-            ? Image.asset(
-                AppAssets.defaultBabyImage.path, 
-                fit: BoxFit.cover,
-                height: profilePicRadius * 2,
-              )
-            : Image.file(
-                File(widget.baby.profileImage!),
-                errorBuilder: (context, error, stackTrace) => notFoundIcon(),
-              ),
+  Widget profilePic() {
+    return ContextMenu(
+      previewBuilder: (context, animation, child) => previewImage(),
+      actions: [
+        contexMenuItem(
+          title: LocaleKeys.common_change,
+          icon: Icons.change_circle_outlined,
+          onPressed: changeProfileImage,
+        ),
+        contexMenuItem(
+          title: LocaleKeys.common_back,
+          icon: Icons.chevron_right,
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+        ),
+      ],
+      child: CircleAvatar(
+        radius: profilePicRadius,
+        backgroundColor: context.colorScheme.primary,
+        child: CircleAvatar(
+          radius: profilePicRadius - profilePicBorderWidth,
+          backgroundImage: widget.baby.profileImage == null 
+            ? AssetImage(AppAssets.defaultBabyImage.path)
+            : FileImage(File(widget.baby.profileImage!)) as ImageProvider
         ),
       ),
     );
+  }
+
+  CupertinoContextMenuAction contexMenuItem({required String title, required IconData icon, void Function()? onPressed}) {
+    return CupertinoContextMenuAction(
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          LocaleText(
+            text: title,
+            style: AppTextStyles.h4.copyWith(
+              color: context.colorScheme.primary,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Icon(
+            icon,
+            color: context.colorScheme.primary,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Image previewImage() {
+    return widget.baby.profileImage == null 
+      ? Image.asset(
+          AppAssets.defaultBabyImage.path, 
+          fit: BoxFit.cover,
+        )
+      : Image.file(
+          File(widget.baby.profileImage!),
+          errorBuilder: (context, error, stackTrace) => notFoundIcon(),
+        );
   }
 
   Icon notFoundIcon() => const Icon(Icons.error_outline);
