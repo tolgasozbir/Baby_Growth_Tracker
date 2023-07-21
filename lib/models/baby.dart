@@ -6,7 +6,7 @@ class Baby extends IBaseModel<Baby> {
   final String name;
   final int age;
   final String gender;
-  final String? profileImage;
+  String? profileImage;
   final List<String> photoAlbum;
 
   Baby({

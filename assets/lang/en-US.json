@@ -21,7 +21,8 @@
         "camera" : "Camera",
         "gallery" : "Gallery",
         "delete" : "Delete",
-        "back" : "Back"
+        "back" : "Back",
+        "change" : "Change"
     },
 
     "errorMsg" : {

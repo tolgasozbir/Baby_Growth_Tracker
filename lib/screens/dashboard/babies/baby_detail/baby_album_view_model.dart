@@ -10,6 +10,7 @@ import '../../../../widgets/dialogs/enlarge_image_dialog.dart';
 abstract class BabyAlbumViewModel extends State<BabyDetailView> with ScreenUpdaterMixin {
 
   final profilePicRadius = 64.0;
+  final profilePicBorderWidth = 4;
   final albumGridCrossAxisCount = 3;
   final albumGridAspecRatio = 1/1;
   final albumGridItemCount = 99;
@@ -18,6 +19,19 @@ abstract class BabyAlbumViewModel extends State<BabyDetailView> with ScreenUpdat
   @override
   void initState() {
     super.initState();
+  }
+
+//TODO: seçilen resimleri cache'de tutuyor oranın pathini veriyor pathprovider ile uygulama klasöründe topla
+
+  void changeProfileImage() async {
+    Navigator.of(context, rootNavigator: true).pop();
+    final pickSource = await ImagePickService.instance.showImageSource(context);
+    if (pickSource != null) {
+      final image = await ImagePickService.instance.pick(pickSource);
+      widget.baby.profileImage = image;
+      await context.read<BabiesProvider>().saveToCache();
+      updateScreen();
+    }
   }
 
   void fabBtnFn() async {
